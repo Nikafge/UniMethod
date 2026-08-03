@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Звіти</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <style>
+        body { background-color: #f4f6f9; }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            transition: 0.2s;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+
+<body class="container mt-4">
+
+<h2>📄 Генерація звітів</h2>
+
+<a href="/" class="btn btn-secondary mb-3">Назад</a>
+
+<div class="row g-4">
+
+    <!-- Шаблони -->
+    <div class="col-md-6">
+        <div class="card card-hover">
+            <div class="card-body">
+                <h5>📑 Обрати шаблон</h5>
+
+                <div th:if="${#lists.isEmpty(templates)}">
+                    <p class="text-muted">Немає шаблонів</p>
+                </div>
+
+                <div th:each="t : ${templates}" class="mb-2">
+                    <a th:href="@{/reports/generate/{id}(id=${t.id})}"
+                       class="btn btn-outline-primary w-100">
+                        <span th:text="${t.name}"></span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Згенеровані звіти -->
+    <div class="col-md-6">
+        <div class="card card-hover">
+            <div class="card-body">
+                <h5>📂 Згенеровані звіти</h5>
+
+                <div th:if="${#lists.isEmpty(reports)}">
+                    <p class="text-muted">Немає звітів</p>
+                </div>
+
+                <div th:each="r : ${reports}" class="mb-2">
+
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span th:text="${r.name}"></span>
+
+                        <a th:href="@{/reports/download/{id}(id=${r.id})}"
+                           class="btn btn-sm btn-dark">
+                            Завантажити
+                        </a>
+                    </div>
+                    <form th:action="@{/reports/delete/{id}(id=${r.id})}"
+                          method="post"
+                          sec:authorize="hasRole('ADMIN')"
+                          onsubmit="return confirm('Видалити цей звіт?')">
+
+                        <input type="hidden"
+                               th:name="${_csrf.parameterName}"
+                               th:value="${_csrf.token}">
+
+                        <button type="submit" class="btn btn-sm btn-danger">
+                            Видалити
+                        </button>
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+<!--    <div th:each="r : ${reports}" class="mb-2 border rounded p-2">-->
+<!--        <div class="d-flex justify-content-between align-items-center gap-2">-->
+
+<!--            <div>-->
+<!--                <strong th:text="${r.name}"></strong>-->
+<!--                <div class="text-muted small" th:text="${r.createdAt}"></div>-->
+<!--            </div>-->
+
+<!--            <div class="d-flex gap-2">-->
+<!--                <a th:href="@{/reports/download/{id}(id=${r.id})}"-->
+<!--                   class="btn btn-sm btn-dark">-->
+<!--                    Завантажити-->
+<!--                </a>-->
+
+<!--                <form th:action="@{/reports/delete/{id}(id=${r.id})}"-->
+<!--                      method="post"-->
+<!--                      sec:authorize="hasRole('ADMIN')"-->
+<!--                      onsubmit="return confirm('Видалити цей звіт?')">-->
+
+<!--                    <input type="hidden"-->
+<!--                           th:name="${_csrf.parameterName}"-->
+<!--                           th:value="${_csrf.token}">-->
+
+<!--                    <button type="submit" class="btn btn-sm btn-danger">-->
+<!--                        Видалити-->
+<!--                    </button>-->
+<!--                </form>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+
+
+
+</div>
+
+</body>
+</html>

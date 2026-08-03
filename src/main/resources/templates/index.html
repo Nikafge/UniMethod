@@ -1,0 +1,473 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="uk">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Система обліку методичних публікацій</title>-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+
+<!--    &lt;!&ndash; Bootstrap 5 &ndash;&gt;-->
+<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"-->
+<!--          rel="stylesheet">-->
+
+<!--    <style>-->
+<!--        body {-->
+<!--            background-color: #f4f6f9;-->
+<!--        }-->
+<!--        .card-hover:hover {-->
+<!--            transform: translateY(-4px);-->
+<!--            transition: 0.2s ease-in-out;-->
+<!--            box-shadow: 0 8px 20px rgba(0,0,0,0.1);-->
+<!--        }-->
+<!--        .navbar-brand {-->
+<!--            font-weight: bold;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+
+<!--<body>-->
+
+<!--<nav class="navbar navbar-expand-lg navbar-dark bg-primary">-->
+<!--    <div class="container-fluid">-->
+<!--        <span class="navbar-brand">-->
+<!--            📚 Облік методичних публікацій-->
+<!--        </span>-->
+
+<!--        <div class="d-flex">-->
+<!--            <a href="/publications" class="btn btn-light btn-sm me-2">Усі публікації</a>-->
+<!--            <a href="/templates" class="btn btn-light btn-sm me-2">Шаблони</a>-->
+<!--            <a href="/reports" class="btn btn-warning btn-sm">Звіт (Word)</a>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</nav>-->
+
+<!--<div class="container mt-4">-->
+
+<!--    <div class="row g-4">-->
+
+<!--        &lt;!&ndash; Додати публікацію &ndash;&gt;-->
+<!--        <div class="col-md-4">-->
+<!--            <div class="card card-hover h-100">-->
+<!--                <div class="card-body">-->
+<!--                    <h5 class="card-title">➕ Додати публікацію</h5>-->
+<!--                    <p class="card-text">-->
+<!--                        Ручне додавання методичної публікації з автоматичною перевіркою-->
+<!--                        формату та дублювання.-->
+<!--                    </p>-->
+<!--                    <a href="/publications/new" class="btn btn-primary w-100">-->
+<!--                        Створити-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash; Імпорт з репозитарію &ndash;&gt;-->
+<!--        <div class="col-md-4">-->
+<!--            <div class="card card-hover h-100">-->
+<!--                <div class="card-body">-->
+<!--                    <h5 class="card-title">🔄 Імпорт з репозитарію</h5>-->
+<!--                    <p class="card-text">-->
+<!--                        Імпорт методичних публікацій з репозитарію DSpace за кафедрами.-->
+<!--                    </p>-->
+<!--                    <a href="/sync/dspace" class="btn btn-success w-100">-->
+<!--                        Відкрити синхронізацію-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash; Перевірка дублікатів &ndash;&gt;-->
+<!--        <div class="col-md-4">-->
+<!--            <div class="card card-hover h-100">-->
+<!--                <div class="card-body">-->
+<!--                    <h5 class="card-title">🛡 Перевірка дублікатів</h5>-->
+<!--                    <p class="card-text">-->
+<!--                        Аналіз записів для виявлення однакових або схожих-->
+<!--                        описів методичних матеріалів.-->
+<!--                    </p>-->
+<!--                    <a href="/publications/duplicates" class="btn btn-danger w-100">-->
+<!--                        Перевірити-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash; Генерація звіту &ndash;&gt;-->
+<!--        <div class="col-md-6">-->
+<!--            <div class="card card-hover h-100">-->
+<!--                <div class="card-body">-->
+<!--                    <h5 class="card-title">📄 Формування Word-звіту</h5>-->
+<!--                    <p class="card-text">-->
+<!--                        Генерація звіту на основі обраного шаблону-->
+<!--                        (Factory Pattern).-->
+<!--                    </p>-->
+
+<!--                    <a href="/reports" class="btn btn-dark w-100">-->
+<!--                        Перейти до генерації-->
+<!--                    </a>-->
+
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--    </div>-->
+
+<!--</div>-->
+
+<!--<footer class="text-center mt-5 mb-3 text-muted">-->
+<!--    © 2026 Кафедра Прогамної інженерії та інформаційних технологій управління-->
+<!--</footer>-->
+
+<!--</body>-->
+<!--</html>-->
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>UniMethod</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <style>
+        :root {
+            --main-blue: #1f4e8c;
+            --dark-blue: #163b6b;
+            --light-blue: #eaf2ff;
+            --page-bg: #f4f7fb;
+            --card-bg: #ffffff;
+            --text-muted-custom: #6c757d;
+        }
+
+        body {
+            background-color: var(--page-bg);
+            color: #212529;
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+
+        .navbar {
+            background: linear-gradient(90deg, var(--dark-blue), var(--main-blue));
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            letter-spacing: 0.2px;
+        }
+
+        .nav-btn {
+            border-radius: 20px;
+            padding: 6px 14px;
+            font-weight: 500;
+        }
+
+        .hero {
+            margin-top: 28px;
+            border-radius: 24px;
+            overflow: hidden;
+            background:
+                    linear-gradient(
+                            90deg,
+                            rgba(22, 59, 107, 0.92),
+                            rgba(31, 78, 140, 0.72)
+                    ),
+                    url('/images/university.jpg');
+
+            background-size: cover;
+            background-position: center;
+            color: #ffffff;
+            min-height: 420px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 16px 36px rgba(31, 78, 140, 0.22);
+        }
+
+        .hero-content {
+            max-width: 720px;
+            padding: 48px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.16);
+            border: 1px solid rgba(255, 255, 255, 0.28);
+            border-radius: 50px;
+            padding: 7px 16px;
+            font-size: 0.9rem;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 750;
+            margin-bottom: 16px;
+        }
+
+        .hero p {
+            font-size: 1.08rem;
+            line-height: 1.7;
+            margin-bottom: 0;
+            color: rgba(255, 255, 255, 0.92);
+        }
+
+        .section-title {
+            margin-top: 42px;
+            margin-bottom: 20px;
+        }
+
+        .section-title h2 {
+            font-size: 1.45rem;
+            font-weight: 700;
+            color: var(--dark-blue);
+            margin-bottom: 6px;
+        }
+
+        .section-title p {
+            color: var(--text-muted-custom);
+            margin-bottom: 0;
+        }
+
+        .feature-card {
+            height: 100%;
+            border: none;
+            border-radius: 20px;
+            background-color: var(--card-bg);
+            box-shadow: 0 8px 24px rgba(33, 37, 41, 0.07);
+            transition: 0.22s ease-in-out;
+            overflow: hidden;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 14px 32px rgba(33, 37, 41, 0.12);
+        }
+
+        .feature-card .card-body {
+            padding: 28px;
+        }
+
+        .icon-box {
+            width: 52px;
+            height: 52px;
+            border-radius: 16px;
+            background-color: var(--light-blue);
+            color: var(--main-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.45rem;
+            margin-bottom: 18px;
+        }
+
+        .feature-card h5 {
+            color: var(--dark-blue);
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            color: #5f6872;
+            line-height: 1.6;
+            min-height: 78px;
+        }
+
+        .btn-main {
+            background-color: var(--main-blue);
+            border-color: var(--main-blue);
+            color: #ffffff;
+            border-radius: 14px;
+            font-weight: 600;
+            padding: 10px 16px;
+        }
+
+        .btn-main:hover {
+            background-color: var(--dark-blue);
+            border-color: var(--dark-blue);
+            color: #ffffff;
+        }
+
+        .footer {
+            margin-top: 56px;
+            padding: 24px 12px;
+            color: #7b8490;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 768px) {
+            .navbar .container-fluid {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            .navbar .d-flex {
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+
+            .nav-btn {
+                margin-right: 0 !important;
+            }
+
+            .hero {
+                min-height: auto;
+            }
+
+            .hero-content {
+                padding: 34px 26px;
+            }
+
+            .hero h1 {
+                font-size: 1.85rem;
+            }
+
+            .feature-card p {
+                min-height: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid px-4">
+        <span class="navbar-brand">
+            📚 Облік методичних публікацій
+        </span>
+
+        <div class="d-flex">
+            <a href="/publications" class="btn btn-light btn-sm nav-btn me-2">Усі публікації</a>
+            <a href="/templates" class="btn btn-light btn-sm nav-btn me-2">Шаблони</a>
+            <a href="/reports" class="btn btn-warning btn-sm nav-btn">Звіт Word</a>
+            <a sec:authorize="hasRole('ADMIN')"
+               href="/admin"
+               class="btn btn-light btn-sm nav-btn me-2">
+                Адміністрування
+            </a>
+
+            <form th:action="@{/logout}" method="post" class="d-inline">
+                <button type="submit" class="btn btn-danger btn-sm">
+                    Вийти
+                </button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+<main class="container">
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>
+                UniMethod
+            </h1>
+
+            <p>
+                Платформа для збирання, перевірки, імпорту та формування
+                звітів про методичні публікації викладачів університету.
+            </p>
+        </div>
+    </section>
+
+    <section class="section-title">
+        <h2>Основні можливості</h2>
+        <p>Оберіть потрібний розділ для роботи з публікаціями, шаблонами або звітами.</p>
+    </section>
+
+    <div class="row g-4">
+
+        <!-- Додати публікацію -->
+        <div class="col-md-6 col-xl-3">
+            <div class="card feature-card">
+                <div class="card-body d-flex flex-column">
+                    <div class="icon-box">➕</div>
+
+                    <h5 class="card-title">Додати публікацію</h5>
+
+                    <p class="card-text">
+                        Ручне додавання методичної публікації з перевіркою формату
+                        та можливих дублювань.
+                    </p>
+
+                    <a href="/publications/new" class="btn btn-main w-100 mt-auto">
+                        Створити
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Імпорт з репозитарію -->
+        <div class="col-md-6 col-xl-3">
+            <div class="card feature-card">
+                <div class="card-body d-flex flex-column">
+                    <div class="icon-box">🔄</div>
+
+                    <h5 class="card-title">Імпорт з репозитарію</h5>
+
+                    <p class="card-text">
+                        Автоматичний імпорт методичних публікацій з репозитарію університету
+                        за кафедрами.
+                    </p>
+
+                    <a href="/sync/dspace" class="btn btn-main w-100 mt-auto">
+                        Відкрити
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Перевірка дублікатів -->
+        <div class="col-md-6 col-xl-3">
+            <div class="card feature-card">
+                <div class="card-body d-flex flex-column">
+                    <div class="icon-box">🛡</div>
+
+                    <h5 class="card-title">Перевірка дублікатів</h5>
+
+                    <p class="card-text">
+                        Аналіз записів для виявлення однакових методичних матеріалів.
+                    </p>
+
+                    <a href="/publications/duplicates" class="btn btn-main w-100 mt-auto">
+                        Перевірити
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Генерація звіту -->
+        <div class="col-md-6 col-xl-3">
+            <div class="card feature-card">
+                <div class="card-body d-flex flex-column">
+                    <div class="icon-box">📄</div>
+
+                    <h5 class="card-title">Формування звіту</h5>
+
+                    <p class="card-text">
+                        Генерація Word-звіту на основі обраного шаблону та зібраних
+                        даних про публікації.
+                    </p>
+
+                    <a href="/reports" class="btn btn-main w-100 mt-auto">
+                        Згенерувати
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</main>
+
+<footer class="footer text-center">
+    © 2026 Кафедра програмної інженерії та інформаційних технологій управління
+</footer>
+
+</body>
+</html>

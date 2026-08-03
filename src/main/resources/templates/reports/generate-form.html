@@ -1,0 +1,136 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org" lang="uk">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Генерація</title>-->
+
+<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"-->
+<!--          rel="stylesheet">-->
+<!--</head>-->
+
+<!--<body class="container mt-4">-->
+
+<!--<h2>⚙️ Параметри звіту</h2>-->
+
+<!--<a href="/reports" class="btn btn-secondary mb-3">Назад</a>-->
+
+<!--<div class="card">-->
+<!--    <div class="card-body">-->
+
+<!--        <h5 th:text="${template.name}"></h5>-->
+
+<!--        <form th:action="@{/reports/generate/{id}(id=${templateId})}"-->
+<!--              th:object="${reportRequest}"-->
+<!--              method="post">-->
+
+<!--            <div class="mb-3">-->
+<!--                <label>Кафедра</label>-->
+<!--                <input type="text" th:field="*{department}" class="form-control">-->
+<!--            </div>-->
+
+<!--            <div class="mb-3">-->
+<!--                <label>Рік</label>-->
+<!--                <input type="number" th:field="*{year}" class="form-control">-->
+<!--            </div>-->
+
+<!--            <button class="btn btn-success w-100">-->
+<!--                Згенерувати-->
+<!--            </button>-->
+
+<!--        </form>-->
+
+<!--    </div>-->
+<!--</div>-->
+
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Генерація звіту</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container mt-4">
+
+<h2>⚙️ Параметри звіту</h2>
+
+<a href="/reports" class="btn btn-secondary mb-3">Назад до звітів</a>
+
+<div class="card">
+    <div class="card-body">
+
+        <h5 th:text="${template.name}"></h5>
+        <p class="text-muted" th:text="${template.description}"></p>
+
+        <div th:if="${errorMessage}" class="alert alert-danger" th:text="${errorMessage}"></div>
+
+        <form th:action="@{/reports/generate/{id}(id=${templateId})}"
+              th:object="${reportRequest}"
+              method="post">
+
+            <div class="mb-4">
+                <label class="form-label fw-bold">Оберіть кафедри</label>
+
+                <div th:if="${#lists.isEmpty(availableDepartments)}" class="text-muted">
+                    У записах поки немає кафедр.
+                </div>
+
+                <div class="form-check" th:each="department : ${availableDepartments}">
+                    <input class="form-check-input"
+                           type="checkbox"
+                           name="departments"
+                           th:value="${department}"
+                           th:id="${'dep_' + department}">
+                    <label class="form-check-label"
+                           th:for="${'dep_' + department}"
+                           th:text="${department}">
+                    </label>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label fw-bold">Оберіть роки</label>
+
+                <div th:if="${#lists.isEmpty(availableYears)}" class="text-muted">
+                    У записах поки немає років.
+                </div>
+
+                <div class="form-check" th:each="year : ${availableYears}">
+                    <input class="form-check-input"
+                           type="checkbox"
+                           name="years"
+                           th:value="${year}"
+                           th:id="${'year_' + year}">
+                    <label class="form-check-label"
+                           th:for="${'year_' + year}"
+                           th:text="${year}">
+                    </label>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label fw-bold">Оберіть джерела</label>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="sources" value="MANUAL" id="src_manual">
+                    <label class="form-check-label" for="src_manual">MANUAL</label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="sources" value="REPOSITORY" id="src_repository">
+                    <label class="form-check-label" for="src_repository">REPOSITORY</label>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-success w-100">
+                Сформувати звіт
+            </button>
+        </form>
+
+    </div>
+</div>
+
+</body>
+</html>

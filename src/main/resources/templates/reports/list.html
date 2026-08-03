@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Згенеровані звіти</title>
+</head>
+
+<body>
+
+<h2>Згенеровані звіти</h2>
+
+<a href="/reports/new">
+  Створити новий звіт
+</a>
+
+<br><br>
+
+<table border="1">
+
+  <tr>
+    <th>ID</th>
+    <th>Назва</th>
+    <th>Дата створення</th>
+    <th>Дії</th>
+  </tr>
+
+  <tr th:each="report : ${reports}">
+
+    <td th:text="${report.id}"></td>
+
+    <td th:text="${report.name}"></td>
+
+    <td th:text="${report.createdAt}"></td>
+
+    <td>
+
+      <a th:href="@{/reports/download/{id}(id=${report.id})}">
+        Завантажити
+      </a>
+
+    </td>
+    <form th:action="@{/reports/delete/{id}(id=${report.id})}"
+          method="post"
+          sec:authorize="hasRole('ADMIN')"
+          onsubmit="return confirm('Видалити звіт?')">
+      <button type="submit" class="btn btn-sm btn-danger">
+        Видалити
+      </button>
+    </form>
+
+  </tr>
+
+</table>
+
+</body>
+</html>

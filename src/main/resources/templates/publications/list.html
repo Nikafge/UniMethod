@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Публікації</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .table-fixed {
+            table-layout: fixed;
+            width: 100%;
+        }
+
+        .text-truncate-cell {
+            max-width: 280px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+         .expandable-cell {
+             max-width: 240px;
+             cursor: pointer;
+         }
+
+        .expandable-text {
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .expandable-cell.expanded .expandable-text {
+            white-space: normal;
+            overflow: visible;
+            text-overflow: unset;
+            word-break: break-word;
+        }
+
+        .expand-hint {
+            display: block;
+            font-size: 0.75rem;
+            color: #6c757d;
+            margin-top: 4px;
+        }
+
+        .expandable-cell.expanded .expand-hint::after {
+            content: "Згорнути";
+        }
+
+        .expandable-cell:not(.expanded) .expand-hint::after {
+            content: "Показати повністю";
+        }
+    </style>
+    <style>
+        .publications-table {
+            table-layout: fixed;
+            width: 100%;
+        }
+
+        .publications-table th,
+        .publications-table td {
+            vertical-align: top;
+        }
+
+        .cell-id {
+            width: 55px;
+        }
+
+        .cell-year {
+            width: 75px;
+        }
+
+        .cell-pages {
+            width: 110px;
+        }
+
+        .cell-actions {
+            width: 100px;
+            white-space: nowrap;
+        }
+
+        .cell-url {
+            width: 105px;
+        }
+
+        .cell-title {
+            width: 230px;
+        }
+
+        .cell-publisher {
+            width: 210px;
+        }
+
+        .cell-department {
+            width: 200px;
+        }
+
+        .cell-authors {
+            width: 190px;
+        }
+
+        .cell-details {
+            width: 210px;
+        }
+
+        .cell-fill {
+            cursor: pointer;
+            line-height: 1.35;
+        }
+
+        .cell-fill-text {
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            word-break: break-word;
+        }
+
+        .cell-fill.expanded .cell-fill-text {
+            display: block;
+            -webkit-line-clamp: unset;
+            -webkit-box-orient: unset;
+            overflow: visible;
+            text-overflow: unset;
+            white-space: normal;
+            word-break: break-word;
+        }
+
+        .cell-fill:hover {
+            background-color: #f8f9fa;
+        }
+
+        .cell-muted {
+            color: #6c757d;
+        }
+
+        .expand-note {
+            display: block;
+            margin-top: 4px;
+            font-size: 0.75rem;
+            color: #6c757d;
+        }
+
+        .cell-fill .expand-note::after {
+            content: "Показати повністю";
+        }
+
+        .cell-fill.expanded .expand-note::after {
+            content: "Згорнути";
+        }
+    </style>
+</head>
+<!--<script>-->
+<!--    function toggleCell(element) {-->
+<!--        element.classList.toggle('expanded');-->
+<!--    }-->
+<!--</script>-->
+<!--<script>-->
+<!--    function showFullText(element, title) {-->
+<!--        const text = element.getAttribute('data-fulltext') || '—';-->
+
+<!--        document.getElementById('fullTextModalLabel').innerText = title;-->
+<!--        document.getElementById('fullTextModalBody').innerText = text;-->
+
+<!--        const modal = new bootstrap.Modal(document.getElementById('fullTextModal'));-->
+<!--        modal.show();-->
+<!--    }-->
+<!--</script>-->
+<body class="container mt-4">
+
+<h2>📚 Методичні публікації</h2>
+
+<div class="mb-3">
+    <a href="/publications/new" class="btn btn-primary">➕ Додати</a>
+    <a href="/" class="btn btn-secondary">Назад</a>
+</div>
+<form th:action="@{/publications}" method="get" class="card mb-4">
+    <div class="card-body">
+
+        <h5 class="card-title">Фільтрація та пошук</h5>
+
+        <div class="row g-3">
+
+            <div class="col-md-3">
+                <label class="form-label">Пошук за назвою</label>
+                <input type="text"
+                       name="titleKeyword"
+                       class="form-control"
+                       placeholder="Назва публікації"
+                       th:value="${titleKeyword}">
+            </div>
+
+            <div class="col-md-3">
+                <label class="form-label">Пошук за автором</label>
+                <input type="text"
+                       name="authorKeyword"
+                       class="form-control"
+                       placeholder="Прізвище або ім'я автора"
+                       th:value="${authorKeyword}">
+            </div>
+
+            <div class="col-md-2">
+                <label class="form-label">Рік</label>
+                <select name="year" class="form-select">
+                    <option value="">Усі роки</option>
+                    <option th:each="y : ${availableYears}"
+                            th:value="${y}"
+                            th:text="${y}"
+                            th:selected="${selectedYear != null and selectedYear == y}">
+                    </option>
+                </select>
+            </div>
+
+            <div class="col-md-2">
+                <label class="form-label">Кафедра</label>
+                <select name="department" class="form-select">
+                    <option value="">Усі кафедри</option>
+                    <option th:each="dep : ${availableDepartments}"
+                            th:value="${dep}"
+                            th:text="${dep}"
+                            th:selected="${selectedDepartment != null and selectedDepartment == dep}">
+                    </option>
+                </select>
+            </div>
+
+            <div class="col-md-2">
+                <label class="form-label">Сортування</label>
+                <select name="sort" class="form-select">
+                    <option value="createdAtDesc"
+                            th:selected="${selectedSort == 'createdAtDesc'}">
+                        Нові спочатку
+                    </option>
+
+                    <option value="createdAtAsc"
+                            th:selected="${selectedSort == 'createdAtAsc'}">
+                        Старі спочатку
+                    </option>
+
+                    <option value="titleAsc"
+                            th:selected="${selectedSort == 'titleAsc'}">
+                        Назва А-Я
+                    </option>
+
+                    <option value="titleDesc"
+                            th:selected="${selectedSort == 'titleDesc'}">
+                        Назва Я-А
+                    </option>
+                </select>
+            </div>
+
+        </div>
+
+        <div class="mt-3 d-flex gap-2">
+            <button type="submit" class="btn btn-primary">
+                Застосувати
+            </button>
+
+            <a href="/publications" class="btn btn-outline-secondary">
+                Очистити
+            </a>
+        </div>
+
+    </div>
+</form>
+<div th:if="${#lists.isEmpty(publications)}" class="alert alert-info">
+    У базі даних поки що немає жодної публікації.
+</div>
+
+<!--<table th:if="${!#lists.isEmpty(publications)}" class="table table-bordered table-striped table-fixed">-->
+<table class="table table-bordered table-striped publications-table">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Назва</th>
+        <th>Рік</th>
+        <th>Вихідні відомості</th>
+        <th>К-сть сторінок</th>
+        <th>Кафедра</th>
+        <th>Автори</th>
+        <th>Видавництво</th>
+        <th>Джерело</th>
+        <th>Дії</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="pub : ${publications}">
+        <td th:text="${pub.id}"></td>
+        <td th:text="${pub.title}"></td>
+        <td th:text="${pub.year}"></td>
+<!--        <td th:text="${pub.publicationDetails}"></td>-->
+<!--        <td class="expandable-cell"-->
+<!--            onclick="toggleCell(this)">-->
+<!--    <span class="expandable-text"-->
+<!--          th:text="${pub.publicationDetails != null && !pub.publicationDetails.isBlank() ? pub.publicationDetails : '—'}">-->
+<!--    </span>-->
+<!--            <span class="expand-hint"-->
+<!--                  th:if="${pub.publicationDetails != null && pub.publicationDetails.length() > 40}">-->
+<!--    </span>-->
+<!--        </td>-->
+        <td class="cell-details">
+            <div class="cell-fill"
+                 onclick="toggleCellText(this)">
+        <span class="cell-fill-text"
+              th:text="${pub.publicationDetails != null && !pub.publicationDetails.isBlank() ? pub.publicationDetails : '—'}">
+        </span>
+
+                <span class="expand-note"
+                      th:if="${pub.publicationDetails != null && pub.publicationDetails.length() > 80}">
+        </span>
+            </div>
+        </td>
+        <td th:text="${pub.pages}"></td>
+        <td th:text="${pub.department}"></td>
+<!--        <td>-->
+<!--            <span th:if="${#lists.isEmpty(pub.authors)}" class="text-muted">Не вказано</span>-->
+<!--            <span th:if="${!#lists.isEmpty(pub.authors)}"-->
+<!--                  th:text="${#strings.listJoin(pub.authors.![author.displayName], ', ')}"></span>-->
+<!--        </td>-->
+<!--        <td class="expandable-cell"-->
+<!--            onclick="toggleCell(this)">-->
+
+<!--    <span th:if="${#lists.isEmpty(pub.authors)}"-->
+<!--          class="text-muted">-->
+<!--        Не вказано-->
+<!--    </span>-->
+
+<!--            <span th:if="${!#lists.isEmpty(pub.authors)}"-->
+<!--                  class="expandable-text"-->
+<!--                  th:text="${#strings.listJoin(pub.authors.![author.displayName], ', ')}">-->
+<!--    </span>-->
+
+<!--            <span class="expand-hint"-->
+<!--                  th:if="${!#lists.isEmpty(pub.authors) && #strings.listJoin(pub.authors.![author.displayName], ', ').length() > 40}">-->
+<!--    </span>-->
+<!--        </td>-->
+        <td class="cell-authors">
+            <div class="cell-fill"
+                 onclick="toggleCellText(this)"
+                 th:with="authorsText=${#lists.isEmpty(pub.authors) ? 'Не вказано' : #strings.listJoin(pub.authors.![author.displayName], ', ')}">
+
+        <span class="cell-fill-text"
+              th:classappend="${#lists.isEmpty(pub.authors)} ? ' cell-muted' : ''"
+              th:text="${authorsText}">
+        </span>
+
+                <span class="expand-note"
+                      th:if="${authorsText.length() > 80}">
+        </span>
+            </div>
+        </td>
+        <td th:text="${pub.publisher}"></td>
+<!--        <td th:text="${pub.url}"></td>-->
+        <td>
+            <a th:if="${pub.url != null and !pub.url.isBlank()}"
+               th:href="${pub.url}"
+               target="_blank"
+               class="btn btn-sm btn-outline-primary">
+                Відкрити
+            </a>
+
+            <span th:if="${pub.url == null or pub.url.isBlank()}" class="text-muted">
+        —
+    </span>
+        </td>
+        <td>
+            <a th:href="@{/publications/{id}/edit(id=${pub.id})}" class="btn btn-sm btn-warning">✏</a>
+            <a th:href="@{/publications/{id}/delete(id=${pub.id})}"
+               class="btn btn-sm btn-danger"
+               onclick="return confirm('Видалити запис?')">🗑</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<div class="modal fade" id="fullTextModal" tabindex="-1" aria-labelledby="fullTextModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title" id="fullTextModalLabel">Повний текст</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрити"></button>
+            </div>
+
+            <div class="modal-body">
+                <p id="fullTextModalBody" style="white-space: pre-wrap;"></p>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    Закрити
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+    function toggleCellText(element) {
+        element.classList.toggle('expanded');
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Перевірка дублікатів</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f4f6f9;
+        }
+
+        .score {
+            font-weight: bold;
+        }
+
+        .level-high {
+            color: #dc3545;
+            font-weight: bold;
+        }
+
+        .level-medium {
+            color: #fd7e14;
+            font-weight: bold;
+        }
+
+        .publication-box {
+            max-width: 420px;
+            white-space: normal;
+            word-break: break-word;
+        }
+
+        .small-muted {
+            color: #6c757d;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+        <span class="navbar-brand">🛡 Перевірка дублікатів</span>
+
+        <div class="d-flex">
+            <a href="/" class="btn btn-light btn-sm me-2">Головна</a>
+            <a href="/publications" class="btn btn-light btn-sm">Публікації</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-4">
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <h4>Результати перевірки</h4>
+
+            <p class="text-muted mb-0">
+                * Перевірка виконується за допомогою відстані Левенштейна для назв,
+                TF-IDF-векторизації та косинусної схожості для змістовного порівняння записів.
+            </p>
+        </div>
+    </div>
+
+    <div th:if="${#lists.isEmpty(duplicates)}" class="alert alert-success">
+        ✅ Підозрілих дублікатів не знайдено.
+    </div>
+
+    <div th:if="${!#lists.isEmpty(duplicates)}" class="alert alert-warning">
+        Знайдено потенційні дублікати: <strong th:text="${#lists.size(duplicates)}"></strong>
+    </div>
+
+    <table th:if="${!#lists.isEmpty(duplicates)}"
+           class="table table-bordered table-striped bg-white">
+        <thead>
+        <tr>
+            <th>Рівень</th>
+            <th>Публікація 1</th>
+            <th>Публікація 2</th>
+            <th>Levenshtein</th>
+            <th>Cosine</th>
+            <th>Підсумковий score</th>
+            <th>Дії</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="candidate : ${duplicates}">
+            <td>
+                <span th:if="${candidate.level.name() == 'HIGH'}"
+                      class="level-high">
+                    HIGH
+                </span>
+
+                <span th:if="${candidate.level.name() == 'MEDIUM'}"
+                      class="level-medium">
+                    MEDIUM
+                </span>
+            </td>
+
+            <td class="publication-box">
+                <strong th:text="${candidate.first.title}"></strong>
+
+                <div class="small-muted">
+                    ID:
+                    <span th:text="${candidate.first.id}"></span>
+                    |
+                    Рік:
+                    <span th:text="${candidate.first.year}"></span>
+                </div>
+
+                <div class="small-muted">
+                    Кафедра:
+                    <span th:text="${candidate.first.department}"></span>
+                </div>
+            </td>
+
+            <td class="publication-box">
+                <strong th:text="${candidate.second.title}"></strong>
+
+                <div class="small-muted">
+                    ID:
+                    <span th:text="${candidate.second.id}"></span>
+                    |
+                    Рік:
+                    <span th:text="${candidate.second.year}"></span>
+                </div>
+
+                <div class="small-muted">
+                    Кафедра:
+                    <span th:text="${candidate.second.department}"></span>
+                </div>
+            </td>
+
+            <td class="score" th:text="${candidate.levenshteinSimilarity}"></td>
+            <td class="score" th:text="${candidate.cosineSimilarity}"></td>
+            <td class="score" th:text="${candidate.finalScore}"></td>
+
+            <td>
+                <div class="d-flex flex-column gap-2">
+                    <a th:href="@{/publications/{id}/edit(id=${candidate.first.id})}"
+                       class="btn btn-sm btn-warning">
+                        Редагувати 1
+                    </a>
+
+                    <a th:href="@{/publications/{id}/edit(id=${candidate.second.id})}"
+                       class="btn btn-sm btn-warning">
+                        Редагувати 2
+                    </a>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>

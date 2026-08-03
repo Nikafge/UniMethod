@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Генерація звіту</title>
+</head>
+
+<body>
+
+<h2>Генерація звіту</h2>
+
+<p>Оберіть шаблон звіту:</p>
+
+<table border="1">
+
+    <tr>
+        <th>ID</th>
+        <th>Назва</th>
+        <th>Тип</th>
+        <th>Дія</th>
+    </tr>
+
+    <tr th:each="t : ${templates}">
+
+        <td th:text="${t.id}"></td>
+        <td th:text="${t.name}"></td>
+        <td th:text="${t.type}"></td>
+
+        <td>
+            <a th:href="@{/reports/generate/{id}(id=${t.id})}">
+                Використати
+            </a>
+        </td>
+
+    </tr>
+
+</table>
+
+<a href="/">Назад</a>
+
+</body>
+</html>

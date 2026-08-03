@@ -1,0 +1,550 @@
+spring:
+  application:
+    name: diploma
+
+dspace:
+  base-url: "https://repository.kpi.kharkov.ua/server/api/discover/search/objects"
+  page-size: 20
+  connect-timeout-seconds: 20
+  read-timeout-seconds: 30
+  departments:
+
+    - code: 1
+      name: "Автоматизація та кібербезпека енергосистем"
+      collection-scope: "0e076f31-9648-480a-a793-12beecf8dcb9"
+      enabled: true
+
+    - code: 2
+      name: "Автоматизація технологічних систем та екологічного моніторингу"
+      collection-scope: "58ac2f0f-e9b3-4627-9fc9-107602346af4"
+      enabled: true
+
+    - code: 3
+      name: "Автоматизоване проєктування та машинознавство"
+      collection-scope: "8de4bbe7-db4a-4b0a-bcad-70560f8b11a3"
+      enabled: true
+
+    - code: 4
+      name: "Автоматизовані електромеханічні системи"
+      collection-scope: "3d4e808c-0190-4f31-b424-3b3342440964"
+      enabled: true
+
+    - code: 5
+      name: "Автоматика та управління в технічних системах"
+      collection-scope: "dc3339ae-2102-4305-a332-f6fb45bf77e6"
+      enabled: true
+
+    - code: 6
+      name: "Автомобіле- і тракторобудування"
+      collection-scope: "94d5cae4-b8c8-459e-9e66-39220b02f7b5"
+      enabled: true
+
+    - code: 7
+      name: "Акушерство, гінекологія та репродуктологія"
+      collection-scope: "b56878b6-016a-4d7c-b698-f6810d5e594a"
+      enabled: true
+
+    - code: 8
+      name: "Безпека праці та навколишнього середовища"
+      collection-scope: "c20b014a-3e30-44ca-8177-e2ae7f98f6cf"
+      enabled: true
+
+    - code: 9
+      name: "Біотехнологія, біофізика та аналітична хімія"
+      collection-scope: "6bb4f064-bdf6-4afe-bbd6-ff435ced42df"
+      enabled: true
+
+    - code: 10
+      name: "Видобування нафти, газу та конденсату"
+      collection-scope: "0fee6711-e309-40a2-b7be-eb86155016d5"
+      enabled: true
+
+    - code: 11
+      name: "Вища математика"
+      collection-scope: "d7a5eec2-9a42-47ae-a4de-8a168b4eb323"
+      enabled: true
+
+    - code: 12
+      name: "Внутрішні хвороби і сімейна медицина"
+      collection-scope: "d2232857-cb17-44a1-a789-478dbc0fc875"
+      enabled: true
+
+    - code: 13
+      name: "Геометричне моделювання та комп'ютерна графіка"
+      collection-scope: "0596353d-f8d2-409a-972c-482b85118d4d"
+      enabled: true
+
+    - code: 14
+      name: "Гуманітарні науки"
+      collection-scope: "d41212f0-1645-4ad1-9114-00b9f309983a"
+      enabled: true
+
+    - code: 15
+      name: "Гідравлічні машини ім. Г. Ф. Проскури"
+      collection-scope: "ca39da7e-aa29-476e-9d87-cb3d7c83defa"
+      enabled: true
+
+    - code: 16
+      name: "Двигуни та гібридні енергетичні установки"
+      collection-scope: "274aed70-b53d-450c-b855-1a28bd73f88a"
+      enabled: true
+
+    - code: 17
+      name: "Деталі машин та гідропневмосистеми"
+      collection-scope: "07c88f85-fb54-4465-94f4-33c1ed3720b1"
+      enabled: true
+
+    - code: 18
+      name: "Ділова іноземна мова та переклад"
+      collection-scope: "61d1c5dd-cf0b-4ab9-a2ac-7bc290a3ce69"
+      enabled: true
+
+    - code: 19
+      name: "Економіка бізнесу і міжнародні економічні відносини"
+      collection-scope: "70d4858a-423e-4743-bc6f-34aca05ed0bd"
+      enabled: true
+
+    - code: 20
+      name: "Економіка та маркетинг"
+      collection-scope: "ed6285f7-a66b-43a2-8618-da48c827fcb4"
+      enabled: true
+
+    - code: 21
+      name: "Економіка і менеджмент Чернівецького факультету НТУ ХПІ"
+      collection-scope: "49f3a0b9-979e-4a79-8b90-acbe78aa9942"
+      enabled: true
+
+    - code: 22
+      name: "Економічна кібернетика та маркетинговий менеджмент"
+      collection-scope: "1b4bcf7e-5a80-4d11-9f19-c25b6b811efa"
+      enabled: true
+
+    - code: 23
+      name: "Електричний транспорт та тепловозобудування"
+      collection-scope: "848d58db-576f-486e-9681-5013a055fb16"
+      enabled: true
+
+    - code: 24
+      name: "Електричні апарати"
+      collection-scope: "ee3aea3b-b3c3-4628-a542-618c7bc1e1eb"
+      enabled: true
+
+    - code: 25
+      name: "Електричні машини"
+      collection-scope: "f303b394-de50-49a6-be41-9edb05092312"
+      enabled: true
+
+    - code: 26
+      name: "Електричні станції"
+      collection-scope: "3808609a-4648-4ed4-b128-57127f21ee96"
+      enabled: true
+
+    - code: 27
+      name: "Електроізоляційна та кабельна техніка"
+      collection-scope: "4b80f500-3525-4ee2-9c68-b446de6fd49d"
+      enabled: true
+
+    - code: 28
+      name: "Енергетичне машинобудування імені Г.Ф. Проскури"
+      collection-scope: "24a3b95b-6883-4c42-83e9-89b6f1e10ba2"
+      enabled: true
+
+    - code: 29
+      name: "Загальна економічна теорія"
+      collection-scope: "ff1cbf4a-8dbf-4f38-a8c2-7287bc87fdf6"
+      enabled: true
+
+    - code: 30
+      name: "Загальна електротехніка"
+      collection-scope: "2a50c3e7-d5c6-4676-8b5e-0604e29f8448"
+      enabled: true
+
+    - code: 31
+      name: "Загальна та неорганічна хімія"
+      collection-scope: "2dc2882c-6b7e-4181-92f3-4be7432e1673"
+      enabled: true
+
+    - code: 32
+      name: "Загальна фармація"
+      collection-scope: "3979ac92-16bd-44ac-87b5-bbb680f1c32b"
+      enabled: true
+
+    - code: 33
+      name: "Зварювання"
+      collection-scope: "2b13dbc2-7c44-4ad0-8fae-f9d69ca0c630"
+      enabled: true
+
+    - code: 34
+      name: "Клінічна лабораторна діагностика та імунологія"
+      collection-scope: "50adae02-4464-41bf-9829-c2c1e0a5c168"
+      enabled: true
+
+    - code: 35
+      name: "Комп'ютерна математика і аналіз даних"
+      collection-scope: "0c46beab-1172-4187-a671-31dbb1329437"
+      enabled: true
+
+    - code: 36
+      name: "Комп'ютерна інженерія та програмування"
+      collection-scope: "2dbbebd8-597e-44bc-a215-b94d707e45fa"
+      enabled: true
+
+    - code: 37
+      name: "Комп'ютерне моделювання процесів та систем"
+      collection-scope: "deebf27e-cee8-4a0d-a211-317cc85f0d69"
+      enabled: true
+
+    - code: 38
+      name: "Комп'ютерне моделювання та інтегровані технології обробки тиском"
+      collection-scope: "b374e345-6ce6-42cb-9737-e4671304134b"
+      enabled: true
+
+    - code: 39
+      name: "Комп'ютерні та радіоелектронні системи контролю та діагностики"
+      collection-scope: "a29ffc23-f69c-4f47-a87c-6c94d74e36a9"
+      enabled: true
+
+    - code: 40
+      name: "Кібербезпека"
+      collection-scope: "76947913-5200-482f-9bce-6a54c2ab31da"
+      enabled: true
+
+    - code: 41
+      name: "Ливарне виробництво"
+      collection-scope: "f2578f8e-ecf7-48e7-9a82-6598fe92ffa6"
+      enabled: true
+
+    - code: 42
+      name: "Маркетинг"
+      collection-scope: "d353ebcf-f655-4af5-bc50-53be4b398ee6"
+      enabled: true
+
+    - code: 43
+      name: "Математичне моделювання та інтелектуальні обчислення в інженерії"
+      collection-scope: "f2badf48-d671-4e3d-b56b-3905d4f0362f"
+      enabled: true
+
+    - code: 44
+      name: "Матеріалознавство"
+      collection-scope: "7e23729d-c4ad-43bb-9404-70fdf3d528c2"
+      enabled: true
+
+    - code: 45
+      name: "Менеджмент"
+      collection-scope: "04461e27-af0f-4c6b-82dd-f3b300bc67b5"
+      enabled: true
+
+    - code: 46
+      name: "Механіка суцільних середовищ та опір матеріалів"
+      collection-scope: "c937816a-f609-4584-b7e3-35bb64828b7d"
+      enabled: true
+
+    - code: 47
+      name: "Механічна та електрична інженерія Чернівецького факультету НТУ ХПІ"
+      collection-scope: "0eb49790-00eb-4dca-9952-2d4a52df0833"
+      enabled: true
+
+    - code: 48
+      name: "Мультимедійні та інтернет технології і системи"
+      collection-scope: "a0a707a3-3cd6-48b2-bc34-d5ebda0c6269"
+      enabled: true
+
+    - code: 49
+      name: "Міжкультурна комунікація та іноземна мова"
+      collection-scope: "a9b1ff4f-58ea-4166-b3de-190fa237daa1"
+      enabled: true
+
+    - code: 50
+      name: "Мікро- та наноелектроніка"
+      collection-scope: "92c44435-92e1-49b2-956e-9fcfd26ae4d7"
+      enabled: true
+
+    - code: 51
+      name: "Мікробіологія, бактеріологія, вірусологія та мікологія"
+      collection-scope: "a929e0a9-eb35-4646-8bd9-78237c26019f"
+      enabled: true
+
+    - code: 52
+      name: "Неврологія і рефлексотерапія"
+      collection-scope: "df3a28c5-a1b3-464b-b96b-d5edcafd1218"
+      enabled: true
+
+    - code: 53
+      name: "Облік і фінанси"
+      collection-scope: "93fe4361-b0b7-4e10-844e-a21e522a7d7a"
+      enabled: true
+
+    - code: 54
+      name: "Організація та управління охороною здоров'я і соціальної медицини"
+      collection-scope: "2e7e3f5c-3b44-4e8a-8517-97d941aa93ed"
+      enabled: true
+
+    - code: 55
+      name: "Органічна хімія, біохімія, лакофарбові матеріали та покриття"
+      collection-scope: "7cf56ad6-1a19-49e3-b81c-cd19bd61200f"
+      enabled: true
+
+    - code: 56
+      name: "Органічний синтез та фармацевтичні технології"
+      collection-scope: "1ea8b5e7-d7a2-4730-ba20-113fa0fef245"
+      enabled: true
+
+    - code: 57
+      name: "Парогенераторобудування"
+      collection-scope: "99b8319d-c039-43c0-891c-d0f6456e0aa5"
+      enabled: true
+
+    - code: 58
+      name: "Педагогіка та психологія управління соціальними системами ім. акад. І. А. Зязюна"
+      collection-scope: "ed3e5061-9cde-4609-b3f1-d88f1d757992"
+      enabled: true
+
+    - code: 59
+      name: "Передача електричної енергії"
+      collection-scope: "6e5e7a66-1c22-4c70-bf44-1c0fa10759f8"
+      enabled: true
+
+    - code: 60
+      name: "Право"
+      collection-scope: "b067b18e-62d6-4514-9d43-b483be3d54c5"
+      enabled: true
+
+    - code: 61
+      name: "Прикладна математика"
+      collection-scope: "35b1199f-ce72-4817-bc87-a5394a7ed3af"
+      enabled: true
+
+    - code: 62
+      name: "Природничі науки"
+      collection-scope: "477e64eb-77d0-4375-90ab-3f02496da277"
+      enabled: true
+
+    - code: 63
+      name: "Програмна інженерія та інтелектуальні технології управління ім. А. В. Дабагяна"
+      collection-scope: "c3dfc75c-a557-4329-a6c9-ca8f391c5c8e"
+      enabled: true
+
+    - code: 64
+      name: "Промислова і біомедична електроніка"
+      collection-scope: "1c2a7c30-4870-4e31-8c41-c3e58c3f50ae"
+      enabled: true
+
+    - code: 65
+      name: "Психіатрія, аддиктологія, психотерапія та клінічна психологія"
+      collection-scope: "fce3b883-1689-431e-bcde-d6f7bdcac4fd"
+      enabled: true
+
+    - code: 66
+      name: "Підйомно-транспортні машини і обладнання"
+      collection-scope: "29088254-1c43-4954-b1a7-085f9ea2ce24"
+      enabled: true
+
+    - code: 67
+      name: "Підприємництво, торгівля і логістика"
+      collection-scope: "ef9e3993-f906-48b6-af62-258c569cb2a7"
+      enabled: true
+
+    - code: 68
+      name: "Радіоелектроніка"
+      collection-scope: "956c212a-d28e-4fe2-a47b-4ae99e421aaa"
+      enabled: true
+
+    - code: 69
+      name: "Радіологія"
+      collection-scope: "60f678f2-5d2d-4497-b186-d5e4117f51b7"
+      enabled: true
+
+    - code: 70
+      name: "Системи інформації ім. В. О. Кравця"
+      collection-scope: "5a14f92b-d0ae-461b-970e-b8150c9d5f82"
+      enabled: true
+
+    - code: 71
+      name: "Системний аналіз та інформаційно-аналітичні технології"
+      collection-scope: "2e502bb0-be67-459b-890a-65364f077c26"
+      enabled: true
+
+    - code: 72
+      name: "Соціологія і публічне управління"
+      collection-scope: "bac7d3f3-acdd-45e5-af3c-c9d726f250dc"
+      enabled: true
+
+    - code: 73
+      name: "Теоретична механіка та опір матеріалів"
+      collection-scope: "62c1b154-5193-4be2-9f6d-5ed90719c3f6"
+      enabled: true
+
+    - code: 74
+      name: "Теоретичні основи електротехніки"
+      collection-scope: "e5bb5c62-f1df-4480-8f26-8eef007fca02"
+      enabled: true
+
+    - code: 75
+      name: "Теорія і системи автоматизованого проектування механізмів і машин"
+      collection-scope: "0203f948-7db4-42ea-9d43-3db2e07598bb"
+      enabled: true
+
+    - code: 76
+      name: "Теплотехніка та енергоефективні технології"
+      collection-scope: "30f50308-68b7-4389-a789-e42158eb67f0"
+      enabled: true
+
+    - code: 77
+      name: "Технологія жирів і продуктів бродіння"
+      collection-scope: "65f024c0-4ff1-4ddb-9c18-215cc8543b31"
+      enabled: true
+
+    - code: 78
+      name: "Технологія кераміки, вогнетривів, скла та емалей"
+      collection-scope: "36521ec9-1a0c-498f-ae70-8520d6f0d001"
+      enabled: true
+
+    - code: 79
+      name: "Технологія машинобудування та металорізальні верстати"
+      collection-scope: "1ea8c7a8-3150-4b2b-bfa6-6b558b6beb1d"
+      enabled: true
+
+    - code: 80
+      name: "Технологія переробки нафти, газу і твердого палива"
+      collection-scope: "e85bf5d2-f6aa-4456-87f8-bdb6a298eb5d"
+      enabled: true
+
+    - code: 81
+      name: "Технологія пластичних мас і біологічно активних полімерів"
+      collection-scope: "871a31e4-0c9f-4604-a1f1-8c97bf221ce0"
+      enabled: true
+
+    - code: 82
+      name: "Технічна електрохімія"
+      collection-scope: "a72caabb-68ee-4489-a94d-1b67051918a4"
+      enabled: true
+
+    - code: 83
+      name: "Технічна кріофізика"
+      collection-scope: "10ea5044-1f1f-4214-8dc0-c477a24e9f63"
+      enabled: true
+
+    - code: 84
+      name: "Турбінобудування"
+      collection-scope: "1acc4c93-7cd6-442e-bc9a-a948eb526d0b"
+      enabled: true
+
+    - code: 85
+      name: "Туризм i готельно-ресторанний бізнес"
+      collection-scope: "d771c117-7612-4f1a-9f05-7bc2c3236dbf"
+      enabled: true
+
+    - code: 86
+      name: "Українознавство, культурологія та історія науки"
+      collection-scope: "e7ff4a6f-6f2a-4991-9c2e-e2b8367c44cb"
+      enabled: true
+
+    - code: 87
+      name: "Українська мова"
+      collection-scope: "53511e93-1e2c-414b-9d97-d297815b9343"
+      enabled: true
+
+    - code: 88
+      name: "Управління проєктами в інформаційних технологіях"
+      collection-scope: "bdd2c58f-52d8-4715-9de1-dd84841e04a5"
+      enabled: true
+
+    - code: 89
+      name: "Фізика металів і напівпровідників"
+      collection-scope: "79fdefe6-f331-4cf7-8715-b57d7be762af"
+      enabled: true
+
+    - code: 90
+      name: "Фізика"
+      collection-scope: "361cd1d8-5cee-41db-ad93-e0f5af97bdf5"
+      enabled: true
+
+    - code: 91
+      name: "Фізична хімія"
+      collection-scope: "e500f9fb-85e1-4b55-b75d-c4d904e56928"
+      enabled: true
+
+    - code: 92
+      name: "Фізична і реабілітаційна медицина, фізіотерапія і курортологія"
+      collection-scope: "5723b981-8ddb-43a3-b0e5-e2e124844036"
+      enabled: true
+
+    - code: 93
+      name: "Фізичне виховання"
+      collection-scope: "c8e1455a-be3a-4a90-afb8-73f4d4b265a8"
+      enabled: true
+
+    - code: 94
+      name: "Філософія"
+      collection-scope: "65613861-0660-4933-a6c9-60b7bf5cc191"
+      enabled: true
+
+    - code: 95
+      name: "Хімічна технологія неорганічних речовин, каталізу та екології"
+      collection-scope: "a8206a4a-7e5a-47ca-a4c6-67859849d1e9"
+      enabled: true
+
+    - code: 96
+      name: "Хімічна техніка та промислова екологія"
+      collection-scope: "178b9153-ebec-4a82-ad80-41735d63881d"
+      enabled: true
+
+    - code: 97
+      name: "Хірургія, нормальна та топографічна анатомія"
+      collection-scope: "7c7810f5-dbfe-40fb-b273-22ec190eeb40"
+      enabled: true
+
+    - code: 98
+      name: "Інженерна електрофізика"
+      collection-scope: "a4faeb6b-c0ef-4746-94b9-f7b233e22d9e"
+      enabled: true
+
+    - code: 99
+      name: "Іноземні мови"
+      collection-scope: "c66ffb07-002b-44d9-9e1e-32e4722ab3d4"
+      enabled: true
+
+    - code: 100
+      name: "Інтегровані технології машинобудування ім. М. Ф. Семка"
+      collection-scope: "01c73402-b3a9-4882-9f17-632af0f94fe5"
+      enabled: true
+
+    - code: 101
+      name: "Інтегровані технології, процеси і апарати"
+      collection-scope: "a31d6574-7e96-4892-8b43-8d64496d613b"
+      enabled: true
+
+    - code: 102
+      name: "Інтелектуальні комп'ютерні системи"
+      collection-scope: "151301eb-8cbc-404a-a4d0-21c9eb6d1c46"
+      enabled: true
+
+    - code: 103
+      name: "Інтернет речей"
+      collection-scope: "05d960b8-368a-4dd4-95c3-8056996a1b36"
+      enabled: true
+
+    - code: 104
+      name: "Інформатика та інтелектуальна власність"
+      collection-scope: "add41ff6-1527-4cc6-9bf7-a241a2c37a8d"
+      enabled: true
+
+    - code: 105
+      name: "Інформаційно-вимірювальні технології і системи"
+      collection-scope: "80b159c6-73f1-4ce7-a807-ff08172a79a0"
+      enabled: true
+
+    - code: 106
+      name: "Інформаційно-вимірювальні технології"
+      collection-scope: "bab76b50-6bc7-4b7c-94c9-794c09988326"
+      enabled: true
+
+    - code: 107
+      name: "Інформаційні системи та технології"
+      collection-scope: "4ab397d5-8a50-4555-aa48-4ab87ada9c26"
+      enabled: true
+
+    - code: 108
+      name: "Інформаційні технології і системи колісних та гусеничних машин ім. О. О. Морозова"
+      collection-scope: "c511ce9d-da06-4844-bf1f-111169844d2d"
+      enabled: true
