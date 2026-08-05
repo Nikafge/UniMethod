@@ -1,4 +1,4 @@
-package com.example.diploma.integration.dspace.dto;
+package com.example.unimethod.integration.dspace.dto;
 
 public class DSpaceSyncResult {
 

@@ -1,7 +1,7 @@
-package com.example.diploma.controller;
+package com.example.unimethod.controller;
 
-import com.example.diploma.integration.dspace.dto.DSpaceSyncResult;
-import com.example.diploma.integration.dspace.service.DSpaceSyncService;
+import com.example.unimethod.integration.dspace.dto.DSpaceSyncResult;
+import com.example.unimethod.integration.dspace.service.DSpaceSyncService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;

@@ -1,5 +1,5 @@
-package com.example.diploma.integration.dspace.service;
-import com.example.diploma.integration.dspace.dto.BibliographicInfo;
+package com.example.unimethod.integration.dspace.service;
+import com.example.unimethod.integration.dspace.dto.BibliographicInfo;
 import org.springframework.stereotype.Service;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

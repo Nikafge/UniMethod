@@ -1,12 +1,12 @@
-package com.example.diploma;
+package com.example.unimethod;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DiplomaApplication {
+public class UniMethod {
     public static void main(String[] args) {
-        SpringApplication.run(DiplomaApplication.class, args);
+        SpringApplication.run(UniMethod.class, args);
     }
 
 }

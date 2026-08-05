@@ -1,4 +1,4 @@
-package com.example.diploma.dto;
+package com.example.unimethod.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

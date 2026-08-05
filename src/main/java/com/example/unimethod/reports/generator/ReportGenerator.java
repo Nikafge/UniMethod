@@ -1,7 +1,7 @@
-package com.example.diploma.reports.generator;
+package com.example.unimethod.reports.generator;
 
-import com.example.diploma.dto.ReportRequest;
-import com.example.diploma.model.ReportTemplate;
+import com.example.unimethod.dto.ReportRequest;
+import com.example.unimethod.model.ReportTemplate;
 
 import java.io.File;
 

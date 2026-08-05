@@ -1,4 +1,4 @@
-package com.example.diploma.quality.service;
+package com.example.unimethod.quality.service;
 
 import org.springframework.stereotype.Service;
 

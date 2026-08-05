@@ -1,6 +1,6 @@
-package com.example.diploma.repository;
+package com.example.unimethod.repository;
 
-import com.example.diploma.model.Author;
+import com.example.unimethod.model.Author;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 

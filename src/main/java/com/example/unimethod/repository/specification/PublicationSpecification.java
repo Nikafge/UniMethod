@@ -1,8 +1,8 @@
-package com.example.diploma.repository.specification;
+package com.example.unimethod.repository.specification;
 
-import com.example.diploma.model.Author;
-import com.example.diploma.model.Publication;
-import com.example.diploma.model.PublicationAuthor;
+import com.example.unimethod.model.Author;
+import com.example.unimethod.model.Publication;
+import com.example.unimethod.model.PublicationAuthor;
 import jakarta.persistence.criteria.Join;
 import jakarta.persistence.criteria.JoinType;
 import org.springframework.data.jpa.domain.Specification;

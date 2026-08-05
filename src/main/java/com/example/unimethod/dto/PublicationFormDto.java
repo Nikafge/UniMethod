@@ -1,6 +1,6 @@
-package com.example.diploma.dto;
+package com.example.unimethod.dto;
 
-import com.example.diploma.model.Publication;
+import com.example.unimethod.model.Publication;
 import jakarta.validation.constraints.*;
 import org.hibernate.validator.constraints.URL;
 //import java.time.Year;

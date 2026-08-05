@@ -1,17 +1,17 @@
-package com.example.diploma.service;
+package com.example.unimethod.service;
 
-import com.example.diploma.integration.dspace.dto.DSpaceRecord;
-import com.example.diploma.model.Author;
-import com.example.diploma.model.Publication;
-import com.example.diploma.model.PublicationAuthor;
-import com.example.diploma.repository.PublicationAuthorRepository;
-import com.example.diploma.repository.PublicationRepository;
-import com.example.diploma.repository.specification.PublicationSpecification;
+import com.example.unimethod.integration.dspace.dto.DSpaceRecord;
+import com.example.unimethod.model.Author;
+import com.example.unimethod.model.Publication;
+import com.example.unimethod.model.PublicationAuthor;
+import com.example.unimethod.repository.PublicationAuthorRepository;
+import com.example.unimethod.repository.PublicationRepository;
+import com.example.unimethod.repository.specification.PublicationSpecification;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.example.diploma.dto.PublicationFormDto;
+import com.example.unimethod.dto.PublicationFormDto;
 import org.springframework.validation.BindingResult;
 import java.time.LocalDateTime;
 import java.util.ArrayList;

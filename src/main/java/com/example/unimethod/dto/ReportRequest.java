@@ -1,4 +1,4 @@
-package com.example.diploma.dto;
+package com.example.unimethod.dto;
 
 import java.util.ArrayList;
 import java.util.List;

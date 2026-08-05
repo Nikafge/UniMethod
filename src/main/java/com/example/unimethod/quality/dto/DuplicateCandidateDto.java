@@ -1,6 +1,6 @@
-package com.example.diploma.quality.dto;
+package com.example.unimethod.quality.dto;
 
-import com.example.diploma.model.Publication;
+import com.example.unimethod.model.Publication;
 
 public class DuplicateCandidateDto {
 

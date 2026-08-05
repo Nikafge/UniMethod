@@ -1,9 +1,9 @@
-package com.example.diploma.integration.dspace.service;
+package com.example.unimethod.integration.dspace.service;
 
-import com.example.diploma.integration.dspace.config.DSpaceDepartmentProperties;
-import com.example.diploma.integration.dspace.config.DSpaceProperties;
-import com.example.diploma.integration.dspace.dto.DSpaceRecord;
-import com.example.diploma.integration.dspace.dto.DSpaceSyncResult;
+import com.example.unimethod.integration.dspace.config.DSpaceDepartmentProperties;
+import com.example.unimethod.integration.dspace.config.DSpaceProperties;
+import com.example.unimethod.integration.dspace.dto.DSpaceRecord;
+import com.example.unimethod.integration.dspace.dto.DSpaceSyncResult;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

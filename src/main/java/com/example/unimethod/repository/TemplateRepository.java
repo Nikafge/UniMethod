@@ -1,6 +1,6 @@
-package com.example.diploma.repository;
+package com.example.unimethod.repository;
 
-import com.example.diploma.model.ReportTemplate;
+import com.example.unimethod.model.ReportTemplate;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface TemplateRepository

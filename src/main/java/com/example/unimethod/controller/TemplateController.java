@@ -1,7 +1,7 @@
-package com.example.diploma.controller;
+package com.example.unimethod.controller;
 
-import com.example.diploma.model.ReportTemplate;
-import com.example.diploma.service.TemplateService;
+import com.example.unimethod.model.ReportTemplate;
+import com.example.unimethod.service.TemplateService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

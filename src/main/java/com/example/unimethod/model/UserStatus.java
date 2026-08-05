@@ -1,4 +1,4 @@
-package com.example.diploma.model;
+package com.example.unimethod.model;
 
 public enum UserStatus {
     PENDING,

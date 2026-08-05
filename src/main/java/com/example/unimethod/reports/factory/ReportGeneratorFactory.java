@@ -1,8 +1,8 @@
-package com.example.diploma.reports.factory;
+package com.example.unimethod.reports.factory;
 
-import com.example.diploma.model.ReportTemplate;
-import com.example.diploma.reports.generator.ReportGenerator;
-import com.example.diploma.reports.generator.WordReportGenerator;
+import com.example.unimethod.model.ReportTemplate;
+import com.example.unimethod.reports.generator.ReportGenerator;
+import com.example.unimethod.reports.generator.WordReportGenerator;
 import org.springframework.stereotype.Component;
 
 @Component

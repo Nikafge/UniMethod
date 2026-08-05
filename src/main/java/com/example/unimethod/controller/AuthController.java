@@ -1,7 +1,7 @@
-package com.example.diploma.controller;
+package com.example.unimethod.controller;
 
-import com.example.diploma.dto.RegisterRequest;
-import com.example.diploma.service.UserService;
+import com.example.unimethod.dto.RegisterRequest;
+import com.example.unimethod.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

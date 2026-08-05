@@ -1,8 +1,8 @@
-package com.example.diploma.service;
+package com.example.unimethod.service;
 
-import com.example.diploma.model.User;
-import com.example.diploma.model.UserStatus;
-import com.example.diploma.repository.UserRepository;
+import com.example.unimethod.model.User;
+import com.example.unimethod.model.UserStatus;
+import com.example.unimethod.repository.UserRepository;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

@@ -1,7 +1,7 @@
-package com.example.diploma.repository;
+package com.example.unimethod.repository;
 
-import com.example.diploma.model.Publication;
-import com.example.diploma.model.PublicationAuthor;
+import com.example.unimethod.model.Publication;
+import com.example.unimethod.model.PublicationAuthor;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

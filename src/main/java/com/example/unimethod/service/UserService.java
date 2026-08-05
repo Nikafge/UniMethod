@@ -1,10 +1,10 @@
-package com.example.diploma.service;
+package com.example.unimethod.service;
 
-import com.example.diploma.dto.RegisterRequest;
-import com.example.diploma.model.Role;
-import com.example.diploma.model.User;
-import com.example.diploma.model.UserStatus;
-import com.example.diploma.repository.UserRepository;
+import com.example.unimethod.dto.RegisterRequest;
+import com.example.unimethod.model.Role;
+import com.example.unimethod.model.User;
+import com.example.unimethod.model.UserStatus;
+import com.example.unimethod.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

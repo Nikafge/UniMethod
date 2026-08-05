@@ -1,11 +1,11 @@
-package com.example.diploma.reports.generator;
+package com.example.unimethod.reports.generator;
 
-import com.example.diploma.dto.ReportRequest;
-import com.example.diploma.model.Publication;
-import com.example.diploma.model.Publication.Source;
-import com.example.diploma.model.ReportTemplate;
-import com.example.diploma.repository.PublicationRepository;
-import com.example.diploma.storage.FileStorageService;
+import com.example.unimethod.dto.ReportRequest;
+import com.example.unimethod.model.Publication;
+import com.example.unimethod.model.Publication.Source;
+import com.example.unimethod.model.ReportTemplate;
+import com.example.unimethod.repository.PublicationRepository;
+import com.example.unimethod.storage.FileStorageService;
 import org.apache.poi.xwpf.usermodel.*;
 import org.apache.xmlbeans.XmlCursor;
 import org.springframework.stereotype.Component;

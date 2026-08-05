@@ -1,7 +1,7 @@
-package com.example.diploma.service;
+package com.example.unimethod.service;
 
-import com.example.diploma.model.Author;
-import com.example.diploma.repository.AuthorRepository;
+import com.example.unimethod.model.Author;
+import com.example.unimethod.repository.AuthorRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

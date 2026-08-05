@@ -1,9 +1,9 @@
-package com.example.diploma.quality.service;
+package com.example.unimethod.quality.service;
 
-import com.example.diploma.model.Publication;
-import com.example.diploma.quality.dto.DuplicateCandidateDto;
-import com.example.diploma.quality.dto.SimilarityLevel;
-import com.example.diploma.repository.PublicationRepository;
+import com.example.unimethod.model.Publication;
+import com.example.unimethod.quality.dto.DuplicateCandidateDto;
+import com.example.unimethod.quality.dto.SimilarityLevel;
+import com.example.unimethod.repository.PublicationRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.*;

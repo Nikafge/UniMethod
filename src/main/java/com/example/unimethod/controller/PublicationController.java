@@ -86,12 +86,12 @@
 //    }
 //}
 
-package com.example.diploma.controller;
+package com.example.unimethod.controller;
 
-import com.example.diploma.dto.PublicationFormDto;
-import com.example.diploma.model.Publication;
-import com.example.diploma.quality.service.PublicationDuplicateAnalysisService;
-import com.example.diploma.service.PublicationService;
+import com.example.unimethod.dto.PublicationFormDto;
+import com.example.unimethod.model.Publication;
+import com.example.unimethod.quality.service.PublicationDuplicateAnalysisService;
+import com.example.unimethod.service.PublicationService;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -1,4 +1,4 @@
-package com.example.diploma.quality.dto;
+package com.example.unimethod.quality.dto;
 
 public enum SimilarityLevel {
     HIGH,

@@ -1,8 +1,8 @@
-package com.example.diploma.controller;
+package com.example.unimethod.controller;
 
-import com.example.diploma.dto.ReportRequest;
-import com.example.diploma.model.Report;
-import com.example.diploma.service.ReportService;
+import com.example.unimethod.dto.ReportRequest;
+import com.example.unimethod.model.Report;
+import com.example.unimethod.service.ReportService;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;

@@ -1,7 +1,7 @@
-package com.example.diploma.controller;
+package com.example.unimethod.controller;
 
-import com.example.diploma.model.UserStatus;
-import com.example.diploma.service.UserService;
+import com.example.unimethod.model.UserStatus;
+import com.example.unimethod.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;

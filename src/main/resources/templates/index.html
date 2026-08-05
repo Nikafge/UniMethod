@@ -1,126 +1,3 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="uk">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <title>Система обліку методичних публікацій</title>-->
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
-
-<!--    &lt;!&ndash; Bootstrap 5 &ndash;&gt;-->
-<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"-->
-<!--          rel="stylesheet">-->
-
-<!--    <style>-->
-<!--        body {-->
-<!--            background-color: #f4f6f9;-->
-<!--        }-->
-<!--        .card-hover:hover {-->
-<!--            transform: translateY(-4px);-->
-<!--            transition: 0.2s ease-in-out;-->
-<!--            box-shadow: 0 8px 20px rgba(0,0,0,0.1);-->
-<!--        }-->
-<!--        .navbar-brand {-->
-<!--            font-weight: bold;-->
-<!--        }-->
-<!--    </style>-->
-<!--</head>-->
-
-<!--<body>-->
-
-<!--<nav class="navbar navbar-expand-lg navbar-dark bg-primary">-->
-<!--    <div class="container-fluid">-->
-<!--        <span class="navbar-brand">-->
-<!--            📚 Облік методичних публікацій-->
-<!--        </span>-->
-
-<!--        <div class="d-flex">-->
-<!--            <a href="/publications" class="btn btn-light btn-sm me-2">Усі публікації</a>-->
-<!--            <a href="/templates" class="btn btn-light btn-sm me-2">Шаблони</a>-->
-<!--            <a href="/reports" class="btn btn-warning btn-sm">Звіт (Word)</a>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</nav>-->
-
-<!--<div class="container mt-4">-->
-
-<!--    <div class="row g-4">-->
-
-<!--        &lt;!&ndash; Додати публікацію &ndash;&gt;-->
-<!--        <div class="col-md-4">-->
-<!--            <div class="card card-hover h-100">-->
-<!--                <div class="card-body">-->
-<!--                    <h5 class="card-title">➕ Додати публікацію</h5>-->
-<!--                    <p class="card-text">-->
-<!--                        Ручне додавання методичної публікації з автоматичною перевіркою-->
-<!--                        формату та дублювання.-->
-<!--                    </p>-->
-<!--                    <a href="/publications/new" class="btn btn-primary w-100">-->
-<!--                        Створити-->
-<!--                    </a>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-
-<!--        &lt;!&ndash; Імпорт з репозитарію &ndash;&gt;-->
-<!--        <div class="col-md-4">-->
-<!--            <div class="card card-hover h-100">-->
-<!--                <div class="card-body">-->
-<!--                    <h5 class="card-title">🔄 Імпорт з репозитарію</h5>-->
-<!--                    <p class="card-text">-->
-<!--                        Імпорт методичних публікацій з репозитарію DSpace за кафедрами.-->
-<!--                    </p>-->
-<!--                    <a href="/sync/dspace" class="btn btn-success w-100">-->
-<!--                        Відкрити синхронізацію-->
-<!--                    </a>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-
-<!--        &lt;!&ndash; Перевірка дублікатів &ndash;&gt;-->
-<!--        <div class="col-md-4">-->
-<!--            <div class="card card-hover h-100">-->
-<!--                <div class="card-body">-->
-<!--                    <h5 class="card-title">🛡 Перевірка дублікатів</h5>-->
-<!--                    <p class="card-text">-->
-<!--                        Аналіз записів для виявлення однакових або схожих-->
-<!--                        описів методичних матеріалів.-->
-<!--                    </p>-->
-<!--                    <a href="/publications/duplicates" class="btn btn-danger w-100">-->
-<!--                        Перевірити-->
-<!--                    </a>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-
-<!--        &lt;!&ndash; Генерація звіту &ndash;&gt;-->
-<!--        <div class="col-md-6">-->
-<!--            <div class="card card-hover h-100">-->
-<!--                <div class="card-body">-->
-<!--                    <h5 class="card-title">📄 Формування Word-звіту</h5>-->
-<!--                    <p class="card-text">-->
-<!--                        Генерація звіту на основі обраного шаблону-->
-<!--                        (Factory Pattern).-->
-<!--                    </p>-->
-
-<!--                    <a href="/reports" class="btn btn-dark w-100">-->
-<!--                        Перейти до генерації-->
-<!--                    </a>-->
-
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-
-<!--    </div>-->
-
-<!--</div>-->
-
-<!--<footer class="text-center mt-5 mb-3 text-muted">-->
-<!--    © 2026 Кафедра Прогамної інженерії та інформаційних технологій управління-->
-<!--</footer>-->
-
-<!--</body>-->
-<!--</html>-->
-
-
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
@@ -130,7 +7,6 @@
     <title>UniMethod</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
           rel="stylesheet">
 
@@ -166,6 +42,33 @@
             font-weight: 500;
         }
 
+        .language-switch {
+            display: inline-flex;
+            gap: 2px;
+            padding: 2px;
+            margin-left: 8px;
+            background-color: rgba(255, 255, 255, 0.18);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 999px;
+        }
+
+        .language-switch button {
+            min-width: 42px;
+            border: 0;
+            border-radius: 999px;
+            padding: 5px 10px;
+            background: transparent;
+            color: #ffffff;
+            font-size: 0.82rem;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+
+        .language-switch button.active {
+            background-color: #ffffff;
+            color: var(--dark-blue);
+        }
+
         .hero {
             margin-top: 28px;
             border-radius: 24px;
@@ -177,7 +80,6 @@
                             rgba(31, 78, 140, 0.72)
                     ),
                     url('/images/university.jpg');
-
             background-size: cover;
             background-position: center;
             color: #ffffff;
@@ -190,16 +92,6 @@
         .hero-content {
             max-width: 720px;
             padding: 48px;
-        }
-
-        .hero-badge {
-            display: inline-block;
-            background-color: rgba(255, 255, 255, 0.16);
-            border: 1px solid rgba(255, 255, 255, 0.28);
-            border-radius: 50px;
-            padding: 7px 16px;
-            font-size: 0.9rem;
-            margin-bottom: 18px;
         }
 
         .hero h1 {
@@ -260,7 +152,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.45rem;
+            font-size: 1rem;
+            font-weight: 800;
             margin-bottom: 18px;
         }
 
@@ -310,8 +203,10 @@
                 gap: 8px;
             }
 
-            .nav-btn {
+            .nav-btn,
+            .language-switch {
                 margin-right: 0 !important;
+                margin-left: 0;
             }
 
             .hero {
@@ -337,25 +232,37 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container-fluid px-4">
-        <span class="navbar-brand">
-            📚 Облік методичних публікацій
+        <span class="navbar-brand" data-i18n="brand">
+            &#1054;&#1073;&#1083;&#1110;&#1082; &#1084;&#1077;&#1090;&#1086;&#1076;&#1080;&#1095;&#1085;&#1080;&#1093; &#1087;&#1091;&#1073;&#1083;&#1110;&#1082;&#1072;&#1094;&#1110;&#1081;
         </span>
 
-        <div class="d-flex">
-            <a href="/publications" class="btn btn-light btn-sm nav-btn me-2">Усі публікації</a>
-            <a href="/templates" class="btn btn-light btn-sm nav-btn me-2">Шаблони</a>
-            <a href="/reports" class="btn btn-warning btn-sm nav-btn">Звіт Word</a>
+        <div class="d-flex align-items-center">
+            <a href="/publications" class="btn btn-light btn-sm nav-btn me-2" data-i18n="navPublications">
+                &#1059;&#1089;&#1110; &#1087;&#1091;&#1073;&#1083;&#1110;&#1082;&#1072;&#1094;&#1110;&#1111;
+            </a>
+            <a href="/templates" class="btn btn-light btn-sm nav-btn me-2" data-i18n="navTemplates">
+                &#1064;&#1072;&#1073;&#1083;&#1086;&#1085;&#1080;
+            </a>
+            <a href="/reports" class="btn btn-warning btn-sm nav-btn me-2" data-i18n="navReports">
+                &#1047;&#1074;&#1110;&#1090; Word
+            </a>
             <a sec:authorize="hasRole('ADMIN')"
                href="/admin"
-               class="btn btn-light btn-sm nav-btn me-2">
-                Адміністрування
+               class="btn btn-light btn-sm nav-btn me-2"
+               data-i18n="navAdmin">
+                &#1040;&#1076;&#1084;&#1110;&#1085;&#1110;&#1089;&#1090;&#1088;&#1091;&#1074;&#1072;&#1085;&#1085;&#1103;
             </a>
 
-            <form th:action="@{/logout}" method="post" class="d-inline">
-                <button type="submit" class="btn btn-danger btn-sm">
-                    Вийти
+            <form th:action="@{/logout}" method="post" class="d-inline me-2">
+                <button type="submit" class="btn btn-danger btn-sm nav-btn" data-i18n="logout">
+                    &#1042;&#1080;&#1081;&#1090;&#1080;
                 </button>
             </form>
+
+            <div class="language-switch" role="group" aria-label="Language switch">
+                <button type="button" data-lang-option="uk" class="active" aria-pressed="true">UA</button>
+                <button type="button" data-lang-option="en" aria-pressed="false">EN</button>
+            </div>
         </div>
     </div>
 </nav>
@@ -364,98 +271,78 @@
 
     <section class="hero">
         <div class="hero-content">
-            <h1>
-                UniMethod
-            </h1>
+            <h1>UniMethod</h1>
 
-            <p>
-                Платформа для збирання, перевірки, імпорту та формування
-                звітів про методичні публікації викладачів університету.
+            <p data-i18n="heroText">
+                &#1055;&#1083;&#1072;&#1090;&#1092;&#1086;&#1088;&#1084;&#1072; &#1076;&#1083;&#1103; &#1079;&#1073;&#1080;&#1088;&#1072;&#1085;&#1085;&#1103;, &#1087;&#1077;&#1088;&#1077;&#1074;&#1110;&#1088;&#1082;&#1080;, &#1110;&#1084;&#1087;&#1086;&#1088;&#1090;&#1091; &#1090;&#1072; &#1092;&#1086;&#1088;&#1084;&#1091;&#1074;&#1072;&#1085;&#1085;&#1103; &#1079;&#1074;&#1110;&#1090;&#1110;&#1074; &#1087;&#1088;&#1086; &#1084;&#1077;&#1090;&#1086;&#1076;&#1080;&#1095;&#1085;&#1110; &#1087;&#1091;&#1073;&#1083;&#1110;&#1082;&#1072;&#1094;&#1110;&#1111; &#1074;&#1080;&#1082;&#1083;&#1072;&#1076;&#1072;&#1095;&#1110;&#1074; &#1091;&#1085;&#1110;&#1074;&#1077;&#1088;&#1089;&#1080;&#1090;&#1077;&#1090;&#1091;.
             </p>
         </div>
     </section>
 
     <section class="section-title">
-        <h2>Основні можливості</h2>
-        <p>Оберіть потрібний розділ для роботи з публікаціями, шаблонами або звітами.</p>
+        <h2 data-i18n="sectionTitle">&#1054;&#1089;&#1085;&#1086;&#1074;&#1085;&#1110; &#1084;&#1086;&#1078;&#1083;&#1080;&#1074;&#1086;&#1089;&#1090;&#1110;</h2>
+        <p data-i18n="sectionText">
+            &#1054;&#1073;&#1077;&#1088;&#1110;&#1090;&#1100; &#1087;&#1086;&#1090;&#1088;&#1110;&#1073;&#1085;&#1080;&#1081; &#1088;&#1086;&#1079;&#1076;&#1110;&#1083; &#1076;&#1083;&#1103; &#1088;&#1086;&#1073;&#1086;&#1090;&#1080; &#1079; &#1087;&#1091;&#1073;&#1083;&#1110;&#1082;&#1072;&#1094;&#1110;&#1103;&#1084;&#1080;, &#1096;&#1072;&#1073;&#1083;&#1086;&#1085;&#1072;&#1084;&#1080; &#1072;&#1073;&#1086; &#1079;&#1074;&#1110;&#1090;&#1072;&#1084;&#1080;.
+        </p>
     </section>
 
     <div class="row g-4">
 
-        <!-- Додати публікацію -->
         <div class="col-md-6 col-xl-3">
             <div class="card feature-card">
                 <div class="card-body d-flex flex-column">
-                    <div class="icon-box">➕</div>
-
-                    <h5 class="card-title">Додати публікацію</h5>
-
-                    <p class="card-text">
-                        Ручне додавання методичної публікації з перевіркою формату
-                        та можливих дублювань.
+                    <div class="icon-box">ADD</div>
+                    <h5 class="card-title" data-i18n="addTitle">&#1044;&#1086;&#1076;&#1072;&#1090;&#1080; &#1087;&#1091;&#1073;&#1083;&#1110;&#1082;&#1072;&#1094;&#1110;&#1102;</h5>
+                    <p class="card-text" data-i18n="addText">
+                        &#1056;&#1091;&#1095;&#1085;&#1077; &#1076;&#1086;&#1076;&#1072;&#1074;&#1072;&#1085;&#1085;&#1103; &#1084;&#1077;&#1090;&#1086;&#1076;&#1080;&#1095;&#1085;&#1086;&#1111; &#1087;&#1091;&#1073;&#1083;&#1110;&#1082;&#1072;&#1094;&#1110;&#1111; &#1079; &#1087;&#1077;&#1088;&#1077;&#1074;&#1110;&#1088;&#1082;&#1086;&#1102; &#1092;&#1086;&#1088;&#1084;&#1072;&#1090;&#1091; &#1090;&#1072; &#1084;&#1086;&#1078;&#1083;&#1080;&#1074;&#1080;&#1093; &#1076;&#1091;&#1073;&#1083;&#1102;&#1074;&#1072;&#1085;&#1100;.
                     </p>
-
-                    <a href="/publications/new" class="btn btn-main w-100 mt-auto">
-                        Створити
+                    <a href="/publications/new" class="btn btn-main w-100 mt-auto" data-i18n="createAction">
+                        &#1057;&#1090;&#1074;&#1086;&#1088;&#1080;&#1090;&#1080;
                     </a>
                 </div>
             </div>
         </div>
 
-        <!-- Імпорт з репозитарію -->
         <div class="col-md-6 col-xl-3">
             <div class="card feature-card">
                 <div class="card-body d-flex flex-column">
-                    <div class="icon-box">🔄</div>
-
-                    <h5 class="card-title">Імпорт з репозитарію</h5>
-
-                    <p class="card-text">
-                        Автоматичний імпорт методичних публікацій з репозитарію університету
-                        за кафедрами.
+                    <div class="icon-box">IMP</div>
+                    <h5 class="card-title" data-i18n="importTitle">&#1030;&#1084;&#1087;&#1086;&#1088;&#1090; &#1079; &#1088;&#1077;&#1087;&#1086;&#1079;&#1080;&#1090;&#1072;&#1088;&#1110;&#1102;</h5>
+                    <p class="card-text" data-i18n="importText">
+                        &#1040;&#1074;&#1090;&#1086;&#1084;&#1072;&#1090;&#1080;&#1095;&#1085;&#1080;&#1081; &#1110;&#1084;&#1087;&#1086;&#1088;&#1090; &#1084;&#1077;&#1090;&#1086;&#1076;&#1080;&#1095;&#1085;&#1080;&#1093; &#1087;&#1091;&#1073;&#1083;&#1110;&#1082;&#1072;&#1094;&#1110;&#1081; &#1079; &#1088;&#1077;&#1087;&#1086;&#1079;&#1080;&#1090;&#1072;&#1088;&#1110;&#1102; &#1091;&#1085;&#1110;&#1074;&#1077;&#1088;&#1089;&#1080;&#1090;&#1077;&#1090;&#1091; &#1079;&#1072; &#1082;&#1072;&#1092;&#1077;&#1076;&#1088;&#1072;&#1084;&#1080;.
                     </p>
-
-                    <a href="/sync/dspace" class="btn btn-main w-100 mt-auto">
-                        Відкрити
+                    <a href="/sync/dspace" class="btn btn-main w-100 mt-auto" data-i18n="openAction">
+                        &#1042;&#1110;&#1076;&#1082;&#1088;&#1080;&#1090;&#1080;
                     </a>
                 </div>
             </div>
         </div>
 
-        <!-- Перевірка дублікатів -->
         <div class="col-md-6 col-xl-3">
             <div class="card feature-card">
                 <div class="card-body d-flex flex-column">
-                    <div class="icon-box">🛡</div>
-
-                    <h5 class="card-title">Перевірка дублікатів</h5>
-
-                    <p class="card-text">
-                        Аналіз записів для виявлення однакових методичних матеріалів.
+                    <div class="icon-box">DUP</div>
+                    <h5 class="card-title" data-i18n="duplicatesTitle">&#1055;&#1077;&#1088;&#1077;&#1074;&#1110;&#1088;&#1082;&#1072; &#1076;&#1091;&#1073;&#1083;&#1110;&#1082;&#1072;&#1090;&#1110;&#1074;</h5>
+                    <p class="card-text" data-i18n="duplicatesText">
+                        &#1040;&#1085;&#1072;&#1083;&#1110;&#1079; &#1079;&#1072;&#1087;&#1080;&#1089;&#1110;&#1074; &#1076;&#1083;&#1103; &#1074;&#1080;&#1103;&#1074;&#1083;&#1077;&#1085;&#1085;&#1103; &#1086;&#1076;&#1085;&#1072;&#1082;&#1086;&#1074;&#1080;&#1093; &#1084;&#1077;&#1090;&#1086;&#1076;&#1080;&#1095;&#1085;&#1080;&#1093; &#1084;&#1072;&#1090;&#1077;&#1088;&#1110;&#1072;&#1083;&#1110;&#1074;.
                     </p>
-
-                    <a href="/publications/duplicates" class="btn btn-main w-100 mt-auto">
-                        Перевірити
+                    <a href="/publications/duplicates" class="btn btn-main w-100 mt-auto" data-i18n="checkAction">
+                        &#1055;&#1077;&#1088;&#1077;&#1074;&#1110;&#1088;&#1080;&#1090;&#1080;
                     </a>
                 </div>
             </div>
         </div>
 
-        <!-- Генерація звіту -->
         <div class="col-md-6 col-xl-3">
             <div class="card feature-card">
                 <div class="card-body d-flex flex-column">
-                    <div class="icon-box">📄</div>
-
-                    <h5 class="card-title">Формування звіту</h5>
-
-                    <p class="card-text">
-                        Генерація Word-звіту на основі обраного шаблону та зібраних
-                        даних про публікації.
+                    <div class="icon-box">DOC</div>
+                    <h5 class="card-title" data-i18n="reportsTitle">&#1060;&#1086;&#1088;&#1084;&#1091;&#1074;&#1072;&#1085;&#1085;&#1103; &#1079;&#1074;&#1110;&#1090;&#1091;</h5>
+                    <p class="card-text" data-i18n="reportsText">
+                        &#1043;&#1077;&#1085;&#1077;&#1088;&#1072;&#1094;&#1110;&#1103; Word-&#1079;&#1074;&#1110;&#1090;&#1091; &#1085;&#1072; &#1086;&#1089;&#1085;&#1086;&#1074;&#1110; &#1086;&#1073;&#1088;&#1072;&#1085;&#1086;&#1075;&#1086; &#1096;&#1072;&#1073;&#1083;&#1086;&#1085;&#1091; &#1090;&#1072; &#1079;&#1110;&#1073;&#1088;&#1072;&#1085;&#1080;&#1093; &#1076;&#1072;&#1085;&#1080;&#1093; &#1087;&#1088;&#1086; &#1087;&#1091;&#1073;&#1083;&#1110;&#1082;&#1072;&#1094;&#1110;&#1111;.
                     </p>
-
-                    <a href="/reports" class="btn btn-main w-100 mt-auto">
-                        Згенерувати
+                    <a href="/reports" class="btn btn-main w-100 mt-auto" data-i18n="generateAction">
+                        &#1047;&#1075;&#1077;&#1085;&#1077;&#1088;&#1091;&#1074;&#1072;&#1090;&#1080;
                     </a>
                 </div>
             </div>
@@ -465,9 +352,89 @@
 
 </main>
 
-<footer class="footer text-center">
-    © 2026 Кафедра програмної інженерії та інформаційних технологій управління
+<footer class="footer text-center" data-i18n="footer">
+    &#169; 2026 &#1050;&#1072;&#1092;&#1077;&#1076;&#1088;&#1072; &#1087;&#1088;&#1086;&#1075;&#1088;&#1072;&#1084;&#1085;&#1086;&#1111; &#1110;&#1085;&#1078;&#1077;&#1085;&#1077;&#1088;&#1110;&#1111; &#1090;&#1072; &#1110;&#1085;&#1092;&#1086;&#1088;&#1084;&#1072;&#1094;&#1110;&#1081;&#1085;&#1080;&#1093; &#1090;&#1077;&#1093;&#1085;&#1086;&#1083;&#1086;&#1075;&#1110;&#1081; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1110;&#1085;&#1085;&#1103;
 </footer>
 
+<script>
+    const translations = {
+        uk: {
+            brand: "\u041e\u0431\u043b\u0456\u043a \u043c\u0435\u0442\u043e\u0434\u0438\u0447\u043d\u0438\u0445 \u043f\u0443\u0431\u043b\u0456\u043a\u0430\u0446\u0456\u0439",
+            navPublications: "\u0423\u0441\u0456 \u043f\u0443\u0431\u043b\u0456\u043a\u0430\u0446\u0456\u0457",
+            navTemplates: "\u0428\u0430\u0431\u043b\u043e\u043d\u0438",
+            navReports: "\u0417\u0432\u0456\u0442 Word",
+            navAdmin: "\u0410\u0434\u043c\u0456\u043d\u0456\u0441\u0442\u0440\u0443\u0432\u0430\u043d\u043d\u044f",
+            logout: "\u0412\u0438\u0439\u0442\u0438",
+            heroText: "\u041f\u043b\u0430\u0442\u0444\u043e\u0440\u043c\u0430 \u0434\u043b\u044f \u0437\u0431\u0438\u0440\u0430\u043d\u043d\u044f, \u043f\u0435\u0440\u0435\u0432\u0456\u0440\u043a\u0438, \u0456\u043c\u043f\u043e\u0440\u0442\u0443 \u0442\u0430 \u0444\u043e\u0440\u043c\u0443\u0432\u0430\u043d\u043d\u044f \u0437\u0432\u0456\u0442\u0456\u0432 \u043f\u0440\u043e \u043c\u0435\u0442\u043e\u0434\u0438\u0447\u043d\u0456 \u043f\u0443\u0431\u043b\u0456\u043a\u0430\u0446\u0456\u0457 \u0432\u0438\u043a\u043b\u0430\u0434\u0430\u0447\u0456\u0432 \u0443\u043d\u0456\u0432\u0435\u0440\u0441\u0438\u0442\u0435\u0442\u0443.",
+            sectionTitle: "\u041e\u0441\u043d\u043e\u0432\u043d\u0456 \u043c\u043e\u0436\u043b\u0438\u0432\u043e\u0441\u0442\u0456",
+            sectionText: "\u041e\u0431\u0435\u0440\u0456\u0442\u044c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u0438\u0439 \u0440\u043e\u0437\u0434\u0456\u043b \u0434\u043b\u044f \u0440\u043e\u0431\u043e\u0442\u0438 \u0437 \u043f\u0443\u0431\u043b\u0456\u043a\u0430\u0446\u0456\u044f\u043c\u0438, \u0448\u0430\u0431\u043b\u043e\u043d\u0430\u043c\u0438 \u0430\u0431\u043e \u0437\u0432\u0456\u0442\u0430\u043c\u0438.",
+            addTitle: "\u0414\u043e\u0434\u0430\u0442\u0438 \u043f\u0443\u0431\u043b\u0456\u043a\u0430\u0446\u0456\u044e",
+            addText: "\u0420\u0443\u0447\u043d\u0435 \u0434\u043e\u0434\u0430\u0432\u0430\u043d\u043d\u044f \u043c\u0435\u0442\u043e\u0434\u0438\u0447\u043d\u043e\u0457 \u043f\u0443\u0431\u043b\u0456\u043a\u0430\u0446\u0456\u0457 \u0437 \u043f\u0435\u0440\u0435\u0432\u0456\u0440\u043a\u043e\u044e \u0444\u043e\u0440\u043c\u0430\u0442\u0443 \u0442\u0430 \u043c\u043e\u0436\u043b\u0438\u0432\u0438\u0445 \u0434\u0443\u0431\u043b\u044e\u0432\u0430\u043d\u044c.",
+            importTitle: "\u0406\u043c\u043f\u043e\u0440\u0442 \u0437 \u0440\u0435\u043f\u043e\u0437\u0438\u0442\u0430\u0440\u0456\u044e",
+            importText: "\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u043d\u0438\u0439 \u0456\u043c\u043f\u043e\u0440\u0442 \u043c\u0435\u0442\u043e\u0434\u0438\u0447\u043d\u0438\u0445 \u043f\u0443\u0431\u043b\u0456\u043a\u0430\u0446\u0456\u0439 \u0437 \u0440\u0435\u043f\u043e\u0437\u0438\u0442\u0430\u0440\u0456\u044e \u0443\u043d\u0456\u0432\u0435\u0440\u0441\u0438\u0442\u0435\u0442\u0443 \u0437\u0430 \u043a\u0430\u0444\u0435\u0434\u0440\u0430\u043c\u0438.",
+            duplicatesTitle: "\u041f\u0435\u0440\u0435\u0432\u0456\u0440\u043a\u0430 \u0434\u0443\u0431\u043b\u0456\u043a\u0430\u0442\u0456\u0432",
+            duplicatesText: "\u0410\u043d\u0430\u043b\u0456\u0437 \u0437\u0430\u043f\u0438\u0441\u0456\u0432 \u0434\u043b\u044f \u0432\u0438\u044f\u0432\u043b\u0435\u043d\u043d\u044f \u043e\u0434\u043d\u0430\u043a\u043e\u0432\u0438\u0445 \u043c\u0435\u0442\u043e\u0434\u0438\u0447\u043d\u0438\u0445 \u043c\u0430\u0442\u0435\u0440\u0456\u0430\u043b\u0456\u0432.",
+            reportsTitle: "\u0424\u043e\u0440\u043c\u0443\u0432\u0430\u043d\u043d\u044f \u0437\u0432\u0456\u0442\u0443",
+            reportsText: "\u0413\u0435\u043d\u0435\u0440\u0430\u0446\u0456\u044f Word-\u0437\u0432\u0456\u0442\u0443 \u043d\u0430 \u043e\u0441\u043d\u043e\u0432\u0456 \u043e\u0431\u0440\u0430\u043d\u043e\u0433\u043e \u0448\u0430\u0431\u043b\u043e\u043d\u0443 \u0442\u0430 \u0437\u0456\u0431\u0440\u0430\u043d\u0438\u0445 \u0434\u0430\u043d\u0438\u0445 \u043f\u0440\u043e \u043f\u0443\u0431\u043b\u0456\u043a\u0430\u0446\u0456\u0457.",
+            createAction: "\u0421\u0442\u0432\u043e\u0440\u0438\u0442\u0438",
+            openAction: "\u0412\u0456\u0434\u043a\u0440\u0438\u0442\u0438",
+            checkAction: "\u041f\u0435\u0440\u0435\u0432\u0456\u0440\u0438\u0442\u0438",
+            generateAction: "\u0417\u0433\u0435\u043d\u0435\u0440\u0443\u0432\u0430\u0442\u0438",
+            footer: "\u00a9 2026 \u041a\u0430\u0444\u0435\u0434\u0440\u0430 \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u043d\u043e\u0457 \u0456\u043d\u0436\u0435\u043d\u0435\u0440\u0456\u0457 \u0442\u0430 \u0456\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0456\u0439\u043d\u0438\u0445 \u0442\u0435\u0445\u043d\u043e\u043b\u043e\u0433\u0456\u0439 \u0443\u043f\u0440\u0430\u0432\u043b\u0456\u043d\u043d\u044f"
+        },
+        en: {
+            brand: "Methodical Publications Registry",
+            navPublications: "All Publications",
+            navTemplates: "Templates",
+            navReports: "Word Report",
+            navAdmin: "Administration",
+            logout: "Log out",
+            heroText: "A platform for collecting, checking, importing, and generating reports for university teachers' methodical publications.",
+            sectionTitle: "Core Features",
+            sectionText: "Choose the section you need to work with publications, templates, or reports.",
+            addTitle: "Add Publication",
+            addText: "Manually add a methodical publication with format validation and duplicate checks.",
+            importTitle: "Repository Import",
+            importText: "Automatically import methodical publications from the university repository by department.",
+            duplicatesTitle: "Duplicate Check",
+            duplicatesText: "Analyze records to find identical methodical materials.",
+            reportsTitle: "Report Generation",
+            reportsText: "Generate a Word report from the selected template and collected publication data.",
+            createAction: "Create",
+            openAction: "Open",
+            checkAction: "Check",
+            generateAction: "Generate",
+            footer: "\u00a9 2026 Department of Software Engineering and Management Information Technologies"
+        }
+    };
+
+    function applyLanguage(language) {
+        const dictionary = translations[language] || translations.uk;
+
+        document.documentElement.lang = language;
+        document.querySelectorAll("[data-i18n]").forEach((element) => {
+            const key = element.dataset.i18n;
+            if (dictionary[key]) {
+                element.textContent = dictionary[key];
+            }
+        });
+
+        document.querySelectorAll("[data-lang-option]").forEach((button) => {
+            const isActive = button.dataset.langOption === language;
+            button.classList.toggle("active", isActive);
+            button.setAttribute("aria-pressed", String(isActive));
+        });
+
+        localStorage.setItem("unimethod.language", language);
+    }
+
+    document.querySelectorAll("[data-lang-option]").forEach((button) => {
+        button.addEventListener("click", () => applyLanguage(button.dataset.langOption));
+    });
+
+    applyLanguage(localStorage.getItem("unimethod.language") || "uk");
+</script>
+
+<script src="/js/language.js"></script>
 </body>
 </html>

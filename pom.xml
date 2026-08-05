@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>diploma</artifactId>
+    <artifactId>unimethod</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>diploma</name>
-    <description>diploma</description>
+    <name>unimethod</name>
+    <description>unimethod</description>
     <url/>
     <licenses>
         <license/>
@@ -94,6 +94,21 @@
             <artifactId>spring-data-jpa</artifactId>
             <version>4.0.2</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>test</scope>
+        </dependency>
 
     </dependencies>
 
@@ -107,4 +122,3 @@
     </build>
 
 </project>
-

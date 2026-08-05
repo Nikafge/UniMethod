@@ -1,8 +1,8 @@
-package com.example.diploma.repository;
+package com.example.unimethod.repository;
 
-import com.example.diploma.model.Role;
-import com.example.diploma.model.User;
-import com.example.diploma.model.UserStatus;
+import com.example.unimethod.model.Role;
+import com.example.unimethod.model.User;
+import com.example.unimethod.model.UserStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

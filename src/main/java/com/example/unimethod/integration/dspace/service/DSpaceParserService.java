@@ -1,7 +1,7 @@
-package com.example.diploma.integration.dspace.service;
+package com.example.unimethod.integration.dspace.service;
 
-import com.example.diploma.integration.dspace.config.DSpaceProperties;
-import com.example.diploma.integration.dspace.dto.DSpaceRecord;
+import com.example.unimethod.integration.dspace.config.DSpaceProperties;
+import com.example.unimethod.integration.dspace.dto.DSpaceRecord;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;

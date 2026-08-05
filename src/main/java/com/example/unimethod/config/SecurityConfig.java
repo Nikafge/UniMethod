@@ -1,6 +1,6 @@
-package com.example.diploma.config;
+package com.example.unimethod.config;
 
-import com.example.diploma.service.CustomUserDetailsService;
+import com.example.unimethod.service.CustomUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;

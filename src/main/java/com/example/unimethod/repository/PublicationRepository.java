@@ -1,7 +1,7 @@
-package com.example.diploma.repository;
+package com.example.unimethod.repository;
 
-import com.example.diploma.model.Publication;
-import com.example.diploma.model.Publication.Source;
+import com.example.unimethod.model.Publication;
+import com.example.unimethod.model.Publication.Source;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;

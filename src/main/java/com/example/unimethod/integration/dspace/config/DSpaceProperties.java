@@ -1,4 +1,4 @@
-package com.example.diploma.integration.dspace.config;
+package com.example.unimethod.integration.dspace.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

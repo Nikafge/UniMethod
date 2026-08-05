@@ -1,13 +1,13 @@
-package com.example.diploma.service;
+package com.example.unimethod.service;
 
-import com.example.diploma.dto.ReportRequest;
-import com.example.diploma.model.Report;
-import com.example.diploma.model.ReportTemplate;
-import com.example.diploma.repository.PublicationRepository;
-import com.example.diploma.repository.ReportRepository;
-import com.example.diploma.repository.TemplateRepository;
-import com.example.diploma.reports.factory.ReportGeneratorFactory;
-import com.example.diploma.storage.FileStorageService;
+import com.example.unimethod.dto.ReportRequest;
+import com.example.unimethod.model.Report;
+import com.example.unimethod.model.ReportTemplate;
+import com.example.unimethod.repository.PublicationRepository;
+import com.example.unimethod.repository.ReportRepository;
+import com.example.unimethod.repository.TemplateRepository;
+import com.example.unimethod.reports.factory.ReportGeneratorFactory;
+import com.example.unimethod.storage.FileStorageService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
