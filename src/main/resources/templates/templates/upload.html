@@ -51,9 +51,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Додати шаблон</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <th:block th:replace="~{fragments/layout :: styles}"></th:block>
 </head>
-<body class="container mt-4">
+<body>
+
+<nav th:replace="~{fragments/layout :: header(true, '/templates')}"></nav>
+
+<main class="container page-container">
 
 <h2>Додати шаблон звіту</h2>
 
@@ -118,6 +122,10 @@
         Завантажити шаблон
     </button>
 </form>
+
+</main>
+
+<footer th:replace="~{fragments/layout :: footer}"></footer>
 
 <script src="/js/language.js"></script>
 </body>

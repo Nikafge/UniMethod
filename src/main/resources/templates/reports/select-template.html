@@ -1,16 +1,22 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="uk">
 <head>
+    <meta charset="UTF-8">
     <title>Генерація звіту</title>
+    <th:block th:replace="~{fragments/layout :: styles}"></th:block>
 </head>
 
 <body>
+
+<nav th:replace="~{fragments/layout :: header(true, '/reports')}"></nav>
+
+<main class="container page-container">
 
 <h2>Генерація звіту</h2>
 
 <p>Оберіть шаблон звіту:</p>
 
-<table border="1">
+<table class="table table-bordered">
 
     <tr>
         <th>ID</th>
@@ -35,7 +41,9 @@
 
 </table>
 
-<a href="/">Назад</a>
+</main>
+
+<footer th:replace="~{fragments/layout :: footer}"></footer>
 
 <script src="/js/language.js"></script>
 </body>
