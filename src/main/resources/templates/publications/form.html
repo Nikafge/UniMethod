@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<nav th:replace="~{fragments/layout :: header(true, '/publications')}"></nav>
+<nav th:replace="~{fragments/layout :: header(true, ${backHref})}"></nav>
 
 <main class="container page-container">
 
@@ -16,6 +16,7 @@
 <div th:if="${errorMessage}" class="alert alert-danger" th:text="${errorMessage}"></div>
 
 <form th:action="@{/publications}" th:object="${publicationForm}" method="post">
+    <input type="hidden" name="backHref" th:value="${backHref}">
 
 <!--    <input type="hidden" th:field="*{id}"/>-->
 

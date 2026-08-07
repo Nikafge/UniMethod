@@ -40,7 +40,7 @@
 
 <body>
 
-<nav th:replace="~{fragments/layout :: header(true, '/publications')}"></nav>
+<nav th:replace="~{fragments/layout :: header(true, ${backHref})}"></nav>
 
 <main class="container page-container">
 
