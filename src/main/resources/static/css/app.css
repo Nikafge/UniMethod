@@ -1,0 +1,88 @@
+:root {
+    --main-blue: #1f4e8c;
+    --dark-blue: #163b6b;
+    --light-blue: #eaf2ff;
+    --page-bg: #f4f7fb;
+    --card-bg: #ffffff;
+    --text-muted-custom: #6c757d;
+}
+
+body {
+    min-height: 100vh;
+    background-color: var(--page-bg);
+    color: #212529;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.navbar {
+    background: linear-gradient(90deg, var(--dark-blue), var(--main-blue));
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.navbar-brand {
+    font-weight: 700;
+    letter-spacing: 0.2px;
+}
+
+.nav-btn {
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-weight: 500;
+}
+
+.language-switch {
+    display: inline-flex;
+    gap: 2px;
+    padding: 2px;
+    margin-left: 8px;
+    background-color: rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 999px;
+}
+
+.language-switch button {
+    min-width: 42px;
+    border: 0;
+    border-radius: 999px;
+    padding: 5px 10px;
+    background: transparent;
+    color: #ffffff;
+    font-size: 0.82rem;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.language-switch button.active {
+    background-color: #ffffff;
+    color: var(--dark-blue);
+}
+
+.page-container {
+    margin-top: 1.5rem;
+}
+
+.footer {
+    margin-top: 56px;
+    padding: 24px 12px;
+    color: #7b8490;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+    .navbar .container-fluid {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .navbar .d-flex {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .nav-btn,
+    .language-switch {
+        margin-right: 0 !important;
+        margin-left: 0;
+    }
+}

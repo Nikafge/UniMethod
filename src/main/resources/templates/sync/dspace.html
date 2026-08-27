@@ -102,13 +102,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Синхронізація з DSpace</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <th:block th:replace="~{fragments/layout :: styles}"></th:block>
 </head>
-<body class="container mt-4">
+<body>
+
+<nav th:replace="~{fragments/layout :: header(true, '/')}"></nav>
+
+<main class="container page-container">
 
 <h2>Синхронізація з DSpace</h2>
-
-<a href="/" class="btn btn-secondary mb-3">Назад</a>
 
 <div class="card mb-4">
     <div class="card-body">
@@ -212,6 +214,10 @@
         </table>
     </div>
 </div>
+
+</main>
+
+<footer th:replace="~{fragments/layout :: footer}"></footer>
 
 <script>
     function filterDepartments() {

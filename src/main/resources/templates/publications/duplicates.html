@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <title>Перевірка дублікатів</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-          rel="stylesheet">
+    <th:block th:replace="~{fragments/layout :: styles}"></th:block>
 
     <style>
         body {
@@ -41,18 +40,9 @@
 
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <div class="container-fluid">
-        <span class="navbar-brand">🛡 Перевірка дублікатів</span>
+<nav th:replace="~{fragments/layout :: header(true, ${backHref})}"></nav>
 
-        <div class="d-flex">
-            <a href="/" class="btn btn-light btn-sm me-2">Головна</a>
-            <a href="/publications" class="btn btn-light btn-sm">Публікації</a>
-        </div>
-    </div>
-</nav>
-
-<div class="container mt-4">
+<main class="container page-container">
 
     <div class="card mb-4">
         <div class="card-body">
@@ -156,7 +146,9 @@
         </tbody>
     </table>
 
-</div>
+</main>
+
+<footer th:replace="~{fragments/layout :: footer}"></footer>
 
 <script src="/js/language.js"></script>
 </body>
