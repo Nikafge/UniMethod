@@ -4,6 +4,9 @@ UniMethod is a Spring Boot web application for managing university publication d
 
 The application starts from `src/main/java/com/example/unimethod/UniMethod.java` and uses Spring MVC, Thymeleaf, Spring Security, Spring Data JPA, MySQL, and Apache POI.
 
+<img width="2557" height="1386" alt="image" src="https://github.com/user-attachments/assets/7c594985-7489-4cbb-97c6-0d424b75ab7b" />
+
+
 ## Features
 
 - User registration and login with Spring Security.
