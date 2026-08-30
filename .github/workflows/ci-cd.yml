@@ -1,0 +1,148 @@
+name: UniMethod CI/CD
+
+on:
+  pull_request:
+    branches:
+      - main
+
+  push:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+env:
+  IMAGE_NAME: ghcr.io/nikafge/unimethod
+
+jobs:
+  # ============================================
+  # 1. Java / Maven CI
+  # ============================================
+  test:
+    name: Maven tests
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: "17"
+          cache: maven
+
+      - name: Make Maven Wrapper executable
+        run: chmod +x mvnw
+
+      - name: Run tests and build
+        run: ./mvnw -B -ntp clean verify
+
+
+  # ============================================
+  # 2. Real Docker + MySQL smoke test
+  # ============================================
+  docker-smoke:
+    name: Docker smoke test
+    runs-on: ubuntu-latest
+
+    needs:
+      - test
+
+    permissions:
+      contents: read
+
+    env:
+      MYSQL_DATABASE: db1
+      MYSQL_USER: unimethod
+      MYSQL_PASSWORD: ci_test_password
+      MYSQL_ROOT_PASSWORD: ci_root_password
+
+      APP_PORT: 8080
+      APP_IMAGE: unimethod:ci
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Build and start Docker Compose
+        run: docker compose up -d --build
+
+      - name: Wait for application
+        run: |
+          for attempt in {1..30}; do
+            if curl -fsS http://localhost:8080/login > /dev/null; then
+              echo "UniMethod is healthy"
+              exit 0
+            fi
+
+            echo "Waiting for UniMethod... attempt ${attempt}/30"
+            sleep 5
+          done
+
+          echo "UniMethod did not become healthy"
+          docker compose ps
+          docker compose logs
+          exit 1
+
+      - name: Stop test environment
+        if: always()
+        run: docker compose down -v
+
+
+  # ============================================
+  # 3. Publish Docker image
+  # Only after merge/push to main
+  # ============================================
+  publish:
+    name: Publish Docker image
+    runs-on: ubuntu-latest
+
+    needs:
+      - test
+      - docker-smoke
+
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v4
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v4
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Docker metadata
+        id: meta
+        uses: docker/metadata-action@v6
+        with:
+          images: ${{ env.IMAGE_NAME }}
+          tags: |
+            type=raw,value=latest
+            type=sha,format=long
+
+      - name: Build and push image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
